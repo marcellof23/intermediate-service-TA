@@ -1,0 +1,4 @@
+server:
+    addr: 'localhost:8080'
+googleAccessKeyID: 'GOOG1EMGUURES77X6DIZEPF45TBM7ZH2ATQKX5PLUWB7FELW4DAN53G25T2II'
+googleAccessKeySecret: 'E/X5km0DcDDkab2k9XP1Czno98rPrF/T5LoOrXyM'
