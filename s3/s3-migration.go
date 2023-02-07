@@ -2,32 +2,36 @@ package s3
 
 import (
 	"fmt"
-	"io"
+	"github.com/gin-gonic/gin"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-func exitErrorf(msg string, args ...interface{}) {
-	fmt.Fprintf(os.Stderr, msg+"\n", args...)
-	os.Exit(1)
+type S3Handler struct {
 }
 
-func ListS3Buckets(w io.Writer) error {
-	sess := session.Must(session.NewSession())
+func NewS3Handler() *S3Handler {
+	return &S3Handler{}
+}
+
+func exitErrorf(msg string, args ...interface{}) {
+	fmt.Fprintf(os.Stderr, msg+"\n", args...)
+}
+
+func (hdl *S3Handler) ListS3Objects(c *gin.Context) {
+	s3Session, ok := c.MustGet("s3Session").(*session.Session)
+	if !ok {
+		fmt.Println("Failed to get google session")
+		return
+	}
 
 	bucket := "testing-vdfs"
 
-	sess, err := session.NewSession(&aws.Config{
-		Region:      aws.String("ap-southeast-1"),
-		Credentials: credentials.NewStaticCredentials("AKIAT3SMMUAFCZA3ELFV", "deMOVjwBikT2xpHB5ISHToJ8oGNSDwEK/qKhIXvd", "")},
-	)
-
 	// Create S3 service client
-	svc := s3.New(sess)
+	svc := s3.New(s3Session)
 
 	resp, err := svc.ListObjectsV2(&s3.ListObjectsV2Input{Bucket: aws.String(bucket)})
 	if err != nil {
@@ -41,6 +45,4 @@ func ListS3Buckets(w io.Writer) error {
 		fmt.Println("Storage class:", *item.StorageClass)
 		fmt.Println("")
 	}
-
-	return nil
 }

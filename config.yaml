@@ -2,3 +2,7 @@ server:
     addr: 'localhost:8080'
 googleAccessKeyID: 'GOOG1EMGUURES77X6DIZEPF45TBM7ZH2ATQKX5PLUWB7FELW4DAN53G25T2II'
 googleAccessKeySecret: 'E/X5km0DcDDkab2k9XP1Czno98rPrF/T5LoOrXyM'
+digitalOceanAccessKeyID: 'DO00RPCBRKL48QL6FK8W'
+digitalOceanAccessKeySecret: '8r7PcHaYzOZEXAoZiQvabSZqTem5Z8FS5jAjKRiR3GU'
+amazonAccessKeyID: 'AKIAT3SMMUAFCZA3ELFV'
+amazonAccessKeySecret: 'deMOVjwBikT2xpHB5ISHToJ8oGNSDwEK/qKhIXvd'

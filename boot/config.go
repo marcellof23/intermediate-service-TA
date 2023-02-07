@@ -11,8 +11,12 @@ type Config struct {
 	Server struct {
 		Addr string `yaml:"addr"`
 	} `yaml:"server"`
-	googleAccessKeyID     string `yaml:"googleAccessKeyID"`
-	googleAccessKeySecret string `yaml:"googleAccessKeySecret"`
+	GoogleAccessKeyID           string `yaml:"googleAccessKeyID"`
+	GoogleAccessKeySecret       string `yaml:"googleAccessKeySecret"`
+	DigitalOceanAccessKeyID     string `yaml:"digitalOceanAccessKeyID"`
+	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
+	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
+	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
 }
 
 func LoadConfig(file string) (Config, error) {
