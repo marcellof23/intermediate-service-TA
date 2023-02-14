@@ -7,21 +7,15 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
 	"github.com/intermediate-service-ta/boot"
-	dohandler "github.com/intermediate-service-ta/do"
-	gcshandler "github.com/intermediate-service-ta/gcs"
-	s3handler "github.com/intermediate-service-ta/s3"
+	integratehandler "github.com/intermediate-service-ta/integrator-storage"
 )
 
-type Sess struct {
-	GCSSession *session.Session
-	DOSSession *session.Session
-	S3Session  *session.Session
-}
-
-func initSession(dep *boot.Dependencies) Sess {
+func initSession(dep *boot.Dependencies) boot.Sess {
 	gcsSession := session.Must(session.NewSession(&aws.Config{
 		Region:      aws.String("auto"),
 		Endpoint:    aws.String("https://storage.googleapis.com"),
@@ -40,31 +34,42 @@ func initSession(dep *boot.Dependencies) Sess {
 		Credentials: credentials.NewStaticCredentials(dep.Config().AmazonAccessKeyID, dep.Config().AmazonAccessKeySecret, ""),
 	}))
 
-	return Sess{
+	return boot.Sess{
 		GCSSession: gcsSession,
 		DOSSession: doSession,
 		S3Session:  s3Session,
 	}
 }
 
+func initClient(sess boot.Sess) boot.Client {
+	gcsClient := s3.New(sess.GCSSession)
+	dosClient := s3.New(sess.DOSSession)
+	s3Client := s3.New(sess.S3Session)
+
+	return boot.Client{
+		GCSClient: gcsClient,
+		DOSClient: dosClient,
+		S3Client:  s3Client,
+	}
+
+}
+
 func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 
 	// init Handler
-	gcsHdl := gcshandler.NewGCSHandler()
-	dosHdl := dohandler.NewDOSHandler()
-	s3Hdl := s3handler.NewS3Handler()
+	integrateHdl := integratehandler.NewIntegratorHandler()
 
 	// init blank engine
 	r := gin.New()
 
 	// init session
 	sess := initSession(dep)
+	client := initClient(sess)
 
 	// attach session to context
 	r.Use(func(c *gin.Context) {
-		c.Set("gcsSession", sess.GCSSession)
-		c.Set("doSession", sess.DOSSession)
-		c.Set("s3Session", sess.S3Session)
+		c.Set("vdfsSession", sess)
+		c.Set("vdfsClient", client)
 	})
 
 	// setup cors config
@@ -85,9 +90,8 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 
 	apiV1 := r.Group("/api/v1")
 	{
-		apiV1.GET("/gcs/list-bucket", gcsHdl.ListGCSBuckets)
-		apiV1.GET("/do/list-bucket", dosHdl.ListDOSBuckets)
-		apiV1.GET("/s3/list-bucket", s3Hdl.ListS3Objects)
+		apiV1.GET("/list-bucket", integrateHdl.ListBuckets)
+		apiV1.POST("/upload-object", integrateHdl.UploadObject)
 	}
 
 	return r

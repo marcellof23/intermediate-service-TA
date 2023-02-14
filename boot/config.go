@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3"
 	"gopkg.in/yaml.v3"
 )
 
@@ -17,6 +19,18 @@ type Config struct {
 	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
 	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
 	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
+}
+
+type Sess struct {
+	GCSSession *session.Session
+	DOSSession *session.Session
+	S3Session  *session.Session
+}
+
+type Client struct {
+	GCSClient *s3.S3
+	DOSClient *s3.S3
+	S3Client  *s3.S3
 }
 
 func LoadConfig(file string) (Config, error) {
