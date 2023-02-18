@@ -92,6 +92,7 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 	{
 		apiV1.GET("/list-bucket", integrateHdl.ListBuckets)
 		apiV1.POST("/upload-object", integrateHdl.UploadObject)
+		apiV1.DELETE("/delete-object", integrateHdl.DeleteObject)
 	}
 
 	return r

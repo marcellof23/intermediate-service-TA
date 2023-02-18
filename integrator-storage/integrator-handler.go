@@ -112,6 +112,7 @@ func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
 			"error":    "Failed to upload file",
 			"uploader": err.Error(),
 		})
+
 	}
 }
 
@@ -121,6 +122,7 @@ func (hdl *IntegratorHandler) DeleteObject(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Parameter in client not found",
 		})
+		return
 	}
 
 	cli, ok := c.MustGet("vdfsClient").(boot.Client)
@@ -137,7 +139,7 @@ func (hdl *IntegratorHandler) DeleteObject(c *gin.Context) {
 
 	_, err := client.DeleteObject(&s3.DeleteObjectInput{
 		Bucket: aws.String("bucket_vfs_12"),
-		Key:    aws.String("testing"),
+		Key:    aws.String("Screenshot from 2022-07-20 16-37-42.png"),
 	})
 
 	if err != nil {
