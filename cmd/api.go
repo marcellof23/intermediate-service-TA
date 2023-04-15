@@ -3,9 +3,10 @@ package cmd
 import (
 	"log"
 
+	"github.com/spf13/cobra"
+
 	"github.com/intermediate-service-ta/api"
 	"github.com/intermediate-service-ta/boot"
-	"github.com/spf13/cobra"
 )
 
 func init() {
