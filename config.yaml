@@ -5,4 +5,10 @@ googleAccessKeySecret: 'E/X5km0DcDDkab2k9XP1Czno98rPrF/T5LoOrXyM'
 digitalOceanAccessKeyID: 'DO00RPCBRKL48QL6FK8W'
 digitalOceanAccessKeySecret: '8r7PcHaYzOZEXAoZiQvabSZqTem5Z8FS5jAjKRiR3GU'
 amazonAccessKeyID: 'AKIAT3SMMUAFCZA3ELFV'
-amazonAccessKeySecret: 'deMOVjwBikT2xpHB5ISHToJ8oGNSDwEK/qKhIXvd'
+amazonAccessKeySecret: 'deMOVjwBik2xpHB5ISHToJ8oGNSDwEK/qKhIXvd'
+consumer:
+    network: 'tcp'
+    brokerAddress: 'localhost:9092'
+    topic: 'command-log'
+    groupID: 'consumer-vfs'
+    partition: 0

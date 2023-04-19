@@ -1,0 +1,918 @@
+kafka reader: the kafka reader got an unknown error reading partition 0 of command-log at offset 2: unexpected EOF
+kafka reader: error initializing the kafka reader for partition 0 of command-log: read tcp 127.0.0.1:48736->127.0.0.1:9092: read: connection reset by peer
+kafka reader: error initializing the kafka reader for partition 0 of command-log: read tcp 127.0.0.1:48746->127.0.0.1:9092: read: connection reset by peer
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Error reading message from Kafka: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: failed to dial: failed to open connection to localhost:9092: dial tcp 127.0.0.1:9092: connect: connection refused
+kafka reader: Unable to establish connection to consumer group coordinator for group consumer-vfs: read tcp 127.0.0.1:40296->127.0.0.1:9092: read: connection reset by peer
+kafka reader: read tcp 127.0.0.1:40296->127.0.0.1:9092: read: connection reset by peer

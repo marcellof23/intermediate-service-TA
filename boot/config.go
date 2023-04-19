@@ -19,6 +19,13 @@ type Config struct {
 	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
 	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
 	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
+	Consumer                    struct {
+		Network       string `yaml:"network"`
+		BrokerAddress string `yaml:"brokerAddress"`
+		Topic         string `yaml:"topic"`
+		GroupID       string `yaml:"groupID"`
+		Partition     int    `yaml:"partition"`
+	} `yaml:"consumer"`
 }
 
 type Sess struct {

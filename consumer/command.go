@@ -2,51 +2,73 @@ package consumer
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
 	"log"
 	"os"
-	"strconv"
-	"time"
+	"os/signal"
+	"syscall"
 
 	"github.com/segmentio/kafka-go"
+
+	"github.com/intermediate-service-ta/boot"
 )
 
-const (
-	network       = "tcp"
-	brokerAddress = "localhost:9092"
-	topic         = "command-log"
-)
+type Message struct {
+	Command string
+	Buffer  []byte
+}
 
-func ConsumeCommand(ctx context.Context) {
-	f, err := os.OpenFile("testlogfile", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
+	kafkaLogFile, err := os.OpenFile("kafka-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
-	defer f.Close()
+	defer kafkaLogFile.Close()
 
-	l := log.New(os.Stdout, "kafka writer: ", 0)
-
-	partition := 0
-	i := 0
-
-	conn, err := kafka.DialLeader(context.Background(), "tcp", "localhost:9092", topic, partition)
+	commandLogFile, err := os.OpenFile("command-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
-		log.Fatal("failed to dial leader:", err)
+		log.Fatalf("error opening file: %v", err)
 	}
+	defer kafkaLogFile.Close()
+
+	kafkaLog := log.New(kafkaLogFile, "kafka reader: ", 0)
+	commandLog := log.New(commandLogFile, "kafka reader: ", 0)
+
+	sigchan := make(chan os.Signal, 1)
+	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
+
+	reader := kafka.NewReader(kafka.ReaderConfig{
+		Brokers:     []string{dep.Config().Consumer.BrokerAddress},
+		GroupID:     dep.Config().Consumer.GroupID,
+		Topic:       dep.Config().Consumer.Topic,
+		Partition:   dep.Config().Consumer.Partition,
+		MinBytes:    1,
+		MaxBytes:    1e5,
+		ErrorLogger: kafkaLog,
+		MaxAttempts: 3,
+	})
 
 	for {
-		conn.SetWriteDeadline(time.Now().Add(10 * time.Second))
-		_, err = conn.WriteMessages(
-			kafka.Message{Value: []byte("this is message " + strconv.Itoa(i))},
-		)
+		select {
+		case <-sigchan:
+			kafkaLog.Println("Shutting down consumer...")
+			return
+		default:
+			message, err := reader.ReadMessage(ctx)
+			if err != nil {
+				kafkaLog.Println("Error reading message from Kafka:", err)
+				continue
+			}
 
-		if err != nil {
-			log.Fatal("failed to write messages:", err)
+			var msg Message
+			if err := json.Unmarshal(message.Value, &msg); err != nil {
+				kafkaLog.Println("failed to unmarshal:", err)
+				continue
+			}
+
+			commandLog.Println(msg.Command, msg.Buffer, message.Offset)
+			fmt.Println(msg.Command, msg.Buffer)
 		}
-
-		time.Sleep(time.Second)
-	}
-
-	if err := conn.Close(); err != nil {
-		l.Fatal("failed to close writer:", err)
 	}
 }
