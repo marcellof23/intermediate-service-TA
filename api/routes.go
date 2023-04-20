@@ -1,6 +1,7 @@
 package api
 
 import (
+	"crypto/tls"
 	"net/http"
 	"time"
 
@@ -15,47 +16,57 @@ import (
 	integratehandler "github.com/intermediate-service-ta/integrator-storage"
 )
 
+func newClient(endpoint, region, accessKeyID, secretKey string) *session.Session {
+	cl := &http.Client{
+		Transport: &http.Transport{
+			TLSClientConfig: &tls.Config{
+				InsecureSkipVerify: true,
+			},
+		},
+	}
+
+	awsConfig := &aws.Config{
+		Region:           aws.String("ap-southeast-1"),
+		S3ForcePathStyle: aws.Bool(true),
+		HTTPClient:       cl,
+		Credentials:      credentials.NewStaticCredentials(accessKeyID, secretKey, ""),
+	}
+
+	if endpoint != "" {
+		awsConfig.Endpoint = aws.String(endpoint)
+	}
+	s := session.Must(session.NewSession(awsConfig))
+
+	return s
+}
+
 func initSession(dep *boot.Dependencies) boot.Sess {
-	gcsSession := session.Must(session.NewSession(&aws.Config{
-		Region:      aws.String("auto"),
-		Endpoint:    aws.String("https://storage.googleapis.com"),
-		Credentials: credentials.NewStaticCredentials(dep.Config().GoogleAccessKeyID, dep.Config().GoogleAccessKeySecret, ""),
-	}))
+	gcsSession := newClient("https://storage.googleapis.com", "auto", dep.Config().GoogleAccessKeyID, dep.Config().GoogleAccessKeySecret)
+	doSession := newClient("https://sgp1.digitaloceanspaces.com", "us-east-1", dep.Config().DigitalOceanAccessKeyID, dep.Config().DigitalOceanAccessKeySecret)
+	s3Session := newClient("", "ap-southeast-1", dep.Config().AmazonAccessKeyID, dep.Config().AmazonAccessKeySecret)
 
-	doSession := session.Must(session.NewSession(&aws.Config{
-		Credentials:      credentials.NewStaticCredentials(dep.Config().DigitalOceanAccessKeyID, dep.Config().DigitalOceanAccessKeySecret, ""),
-		Endpoint:         aws.String("https://sgp1.digitaloceanspaces.com"),
-		Region:           aws.String("us-east-1"),
-		S3ForcePathStyle: aws.Bool(false), // // Configures to use subdomain/virtual calling format. Depending on your version, alternatively use o.UsePathStyle = false
-	}))
-
-	s3Session := session.Must(session.NewSession(&aws.Config{
-		Region:      aws.String("ap-southeast-1"),
-		Credentials: credentials.NewStaticCredentials(dep.Config().AmazonAccessKeyID, dep.Config().AmazonAccessKeySecret, ""),
-	}))
+	sessionMap := make(map[string]*session.Session)
+	sessionMap["gcs"] = gcsSession
+	sessionMap["dos"] = doSession
+	sessionMap["s3"] = s3Session
 
 	return boot.Sess{
-		GCSSession: gcsSession,
-		DOSSession: doSession,
-		S3Session:  s3Session,
+		SessionMap: sessionMap,
 	}
 }
 
 func initClient(sess boot.Sess) boot.Client {
-	gcsClient := s3.New(sess.GCSSession)
-	dosClient := s3.New(sess.DOSSession)
-	s3Client := s3.New(sess.S3Session)
-
-	return boot.Client{
-		GCSClient: gcsClient,
-		DOSClient: dosClient,
-		S3Client:  s3Client,
+	var clientMap = make(map[string]*s3.S3)
+	for _, v := range boot.Clients {
+		clientMap[v] = s3.New(sess.SessionMap[v])
 	}
 
+	return boot.Client{
+		ClientMap: clientMap,
+	}
 }
 
 func InitRoutes(dep *boot.Dependencies) *gin.Engine {
-
 	// init Handler
 	integrateHdl := integratehandler.NewIntegratorHandler()
 

@@ -33,33 +33,16 @@ func (hdl *IntegratorHandler) ListBuckets(c *gin.Context) {
 	ctx, cancel := context.WithTimeout(ctx, time.Second*10)
 	defer cancel()
 
-	resultGCS, err := client.GCSClient.ListBucketsWithContext(ctx, &s3.ListBucketsInput{})
-	if err != nil {
-		fmt.Printf("ListBucketsWithContext: %s", err.Error())
-	}
+	fmt.Println("Buckets: ")
+	for key, cli := range client.ClientMap {
+		res, err := cli.ListBucketsWithContext(ctx, &s3.ListBucketsInput{})
+		if err != nil {
+			fmt.Printf("ListBucketsWithContext %s: %s", key, err.Error())
+		}
 
-	resultDOS, err := client.DOSClient.ListBucketsWithContext(ctx, &s3.ListBucketsInput{})
-	if err != nil {
-		fmt.Printf("ListBucketsWithContext: %s", err.Error())
-	}
-
-	resultS3, err := client.S3Client.ListBucketsWithContext(ctx, &s3.ListBucketsInput{})
-	if err != nil {
-		fmt.Printf("ListBucketsWithContext: %s", err.Error())
-	}
-
-	fmt.Println("Buckets:")
-
-	for _, b := range resultGCS.Buckets {
-		fmt.Printf("%s\n", aws.StringValue(b.Name))
-	}
-
-	for _, b := range resultDOS.Buckets {
-		fmt.Printf("%s\n", aws.StringValue(b.Name))
-	}
-
-	for _, b := range resultS3.Buckets {
-		fmt.Printf("%s\n", aws.StringValue(b.Name))
+		for _, b := range res.Buckets {
+			fmt.Printf("%s\n", aws.StringValue(b.Name))
+		}
 	}
 }
 
@@ -70,6 +53,7 @@ func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
 			"error":        "No values in photo",
 			"uploadObject": err.Error(),
 		})
+		return
 	}
 
 	clientType := c.PostForm("client")
@@ -78,6 +62,7 @@ func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
 			"error":        "Parameter in client not found",
 			"uploadObject": err.Error(),
 		})
+		return
 	}
 
 	cli, ok := c.MustGet("vdfsClient").(boot.Client)
@@ -97,14 +82,9 @@ func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
 	client := helper.ClientInitiation(clientType, cli)
 
 	_, err = client.PutObject(&s3.PutObjectInput{
-		Bucket:               aws.String("bucket_vfs_12"),
-		Key:                  aws.String(header.Filename),
-		Body:                 bytes.NewReader(fileBuffer),
-		ACL:                  aws.String("private"),
-		ContentLength:        aws.Int64(fileSize),
-		ContentType:          aws.String(http.DetectContentType(fileBuffer)),
-		ContentDisposition:   aws.String("attachment"),
-		ServerSideEncryption: aws.String("AES256"),
+		Bucket: aws.String("testing-vfs"),
+		Key:    aws.String(header.Filename),
+		Body:   bytes.NewReader(fileBuffer),
 	})
 
 	if err != nil {

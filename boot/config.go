@@ -9,6 +9,10 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var (
+	Clients = []string{"gcs", "dos", "s3"}
+)
+
 type Config struct {
 	Server struct {
 		Addr string `yaml:"addr"`
@@ -29,15 +33,14 @@ type Config struct {
 }
 
 type Sess struct {
+	SessionMap map[string]*session.Session
 	GCSSession *session.Session
 	DOSSession *session.Session
 	S3Session  *session.Session
 }
 
 type Client struct {
-	GCSClient *s3.S3
-	DOSClient *s3.S3
-	S3Client  *s3.S3
+	ClientMap map[string]*s3.S3
 }
 
 func LoadConfig(file string) (Config, error) {

@@ -4,11 +4,14 @@ googleAccessKeyID: 'GOOG1EMGUURES77X6DIZEPF45TBM7ZH2ATQKX5PLUWB7FELW4DAN53G25T2I
 googleAccessKeySecret: 'E/X5km0DcDDkab2k9XP1Czno98rPrF/T5LoOrXyM'
 digitalOceanAccessKeyID: 'DO00RPCBRKL48QL6FK8W'
 digitalOceanAccessKeySecret: '8r7PcHaYzOZEXAoZiQvabSZqTem5Z8FS5jAjKRiR3GU'
-amazonAccessKeyID: 'AKIAT3SMMUAFCZA3ELFV'
-amazonAccessKeySecret: 'deMOVjwBik2xpHB5ISHToJ8oGNSDwEK/qKhIXvd'
+amazonAccessKeyID: 'AKIAT3SMMUAFHO5I2W7V'
+amazonAccessKeySecret: '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'
 consumer:
     network: 'tcp'
     brokerAddress: 'localhost:9092'
     topic: 'command-log'
     groupID: 'consumer-vfs'
     partition: 0
+
+#s3ID = AKIAT3SMMUAFCZA3ELFV
+#s3Secret =  deMOVjwBik2xpHB5ISHToJ8oGNSDwEK\/qKhIXvd
