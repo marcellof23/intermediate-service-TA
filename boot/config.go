@@ -23,13 +23,24 @@ type Config struct {
 	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
 	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
 	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
-	Consumer                    struct {
-		Network       string `yaml:"network"`
-		BrokerAddress string `yaml:"brokerAddress"`
-		Topic         string `yaml:"topic"`
-		GroupID       string `yaml:"groupID"`
-		Partition     int    `yaml:"partition"`
-	} `yaml:"consumer"`
+	Consumer                    `yaml:"consumer"`
+	DatabaseConfig              `yaml:"database"`
+}
+
+type Consumer struct {
+	Network       string `yaml:"network"`
+	BrokerAddress string `yaml:"brokerAddress"`
+	Topic         string `yaml:"topic"`
+	GroupID       string `yaml:"groupID"`
+	Partition     int    `yaml:"partition"`
+}
+
+type DatabaseConfig struct {
+	User string `yaml:"user"`
+	Pass string `yaml:"pass"`
+	Host string `yaml:"host"`
+	Port int    `yaml:"port"`
+	Name string `yaml:"name"`
 }
 
 type Sess struct {

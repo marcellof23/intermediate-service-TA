@@ -81,6 +81,7 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 	r.Use(func(c *gin.Context) {
 		c.Set("vdfsSession", sess)
 		c.Set("vdfsClient", client)
+		c.Set("db", dep.DB())
 	})
 
 	// setup cors config

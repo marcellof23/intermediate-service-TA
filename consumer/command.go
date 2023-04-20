@@ -38,11 +38,12 @@ func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
 
+	consumerConf := dep.Config().Consumer
 	reader := kafka.NewReader(kafka.ReaderConfig{
-		Brokers:     []string{dep.Config().Consumer.BrokerAddress},
-		GroupID:     dep.Config().Consumer.GroupID,
-		Topic:       dep.Config().Consumer.Topic,
-		Partition:   dep.Config().Consumer.Partition,
+		Brokers:     []string{consumerConf.BrokerAddress},
+		GroupID:     consumerConf.GroupID,
+		Topic:       consumerConf.Topic,
+		Partition:   consumerConf.Partition,
 		MinBytes:    1,
 		MaxBytes:    1e5,
 		ErrorLogger: kafkaLog,

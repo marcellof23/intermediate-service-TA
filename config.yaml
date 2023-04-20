@@ -12,6 +12,9 @@ consumer:
     topic: 'command-log'
     groupID: 'consumer-vfs'
     partition: 0
-
-#s3ID = AKIAT3SMMUAFCZA3ELFV
-#s3Secret =  deMOVjwBik2xpHB5ISHToJ8oGNSDwEK\/qKhIXvd
+database:
+    user: 'root'
+    pass: 'Wt2L9n7WMV6Ssgmp'
+    host: 'localhost'
+    port: 3306
+    name: 'vfsdb'

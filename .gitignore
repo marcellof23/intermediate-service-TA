@@ -3,3 +3,4 @@ vendor
 .idea
 command-log
 kafka-log
+data

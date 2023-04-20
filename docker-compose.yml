@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: db-service
+    environment:
+      MYSQL_DATABASE: 'vfsdb'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
+      MYSQL_ROOT_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - ./data/prod/mysql/data:/var/lib/mysql
