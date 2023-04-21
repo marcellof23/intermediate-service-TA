@@ -1,10 +1,8 @@
 package model
 
-import "github.com/google/uuid"
-
 type File struct {
 	Base
-	ID           uuid.UUID
+	ID           int64
 	Filename     string
 	OriginalName string
 	Mimetype     string

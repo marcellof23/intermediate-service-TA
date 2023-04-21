@@ -1,6 +1,10 @@
 package boot
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+
+	"github.com/intermediate-service-ta/internal/storage/dao"
+)
 
 type Dependencies struct {
 	cfg Config
@@ -9,6 +13,7 @@ type Dependencies struct {
 
 func InitDependencies(cfg Config) (*Dependencies, error) {
 	db, err := InitDB(cfg.DatabaseConfig)
+	db.AutoMigrate(&dao.File{}, &dao.User{}, &dao.Group{})
 	if err != nil {
 		return nil, err
 	}

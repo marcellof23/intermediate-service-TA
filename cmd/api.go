@@ -8,7 +8,7 @@ import (
 
 	"github.com/intermediate-service-ta/api"
 	"github.com/intermediate-service-ta/boot"
-	"github.com/intermediate-service-ta/consumer"
+	"github.com/intermediate-service-ta/internal/consumer"
 )
 
 func init() {

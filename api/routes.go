@@ -13,7 +13,9 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/intermediate-service-ta/boot"
-	integratehandler "github.com/intermediate-service-ta/integrator-storage"
+	integratehandler "github.com/intermediate-service-ta/internal/handler/integrator-storage"
+	userhandler "github.com/intermediate-service-ta/internal/handler/user"
+	userrepository "github.com/intermediate-service-ta/internal/storage"
 )
 
 func newClient(endpoint, region, accessKeyID, secretKey string) *session.Session {
@@ -67,8 +69,12 @@ func initClient(sess boot.Sess) boot.Client {
 }
 
 func InitRoutes(dep *boot.Dependencies) *gin.Engine {
+	// init repos
+	userRepo := userrepository.New()
+
 	// init Handler
 	integrateHdl := integratehandler.NewIntegratorHandler()
+	userHdl := userhandler.NewUserHandler(userRepo)
 
 	// init blank engine
 	r := gin.New()
@@ -82,6 +88,7 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 		c.Set("vdfsSession", sess)
 		c.Set("vdfsClient", client)
 		c.Set("db", dep.DB())
+		c.Set("jwt-secret", dep.Config().JWTSecretKey)
 	})
 
 	// setup cors config
@@ -102,9 +109,22 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 
 	apiV1 := r.Group("/api/v1")
 	{
-		apiV1.GET("/list-bucket", integrateHdl.ListBuckets)
-		apiV1.POST("/upload-object", integrateHdl.UploadObject)
-		apiV1.DELETE("/delete-object", integrateHdl.DeleteObject)
+		authRoutes := apiV1.Group("/")
+		authRoutes.Use(userhandler.VerifyJWT)
+
+		apiV1File := authRoutes.Group("/file")
+		{
+			apiV1File.GET("/list-bucket", integrateHdl.ListBuckets)
+			apiV1File.POST("/upload-object", integrateHdl.UploadObject)
+			apiV1File.DELETE("/delete-object", integrateHdl.DeleteObject)
+		}
+
+		apiV1UserNoAuth := apiV1.Group("/user")
+		{
+			apiV1UserNoAuth.POST("/login", userHdl.Login)
+			apiV1UserNoAuth.POST("/sign-up", userHdl.SignIn)
+		}
+
 	}
 
 	return r

@@ -23,6 +23,7 @@ type Config struct {
 	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
 	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
 	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
+	JWTSecretKey                string `yaml:"jwtSecretKey"`
 	Consumer                    `yaml:"consumer"`
 	DatabaseConfig              `yaml:"database"`
 }

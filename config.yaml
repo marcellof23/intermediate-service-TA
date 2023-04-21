@@ -6,6 +6,7 @@ digitalOceanAccessKeyID: 'DO00RPCBRKL48QL6FK8W'
 digitalOceanAccessKeySecret: '8r7PcHaYzOZEXAoZiQvabSZqTem5Z8FS5jAjKRiR3GU'
 amazonAccessKeyID: 'AKIAT3SMMUAFHO5I2W7V'
 amazonAccessKeySecret: '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'
+jwtSecretKey: 'Wt2L9n7WMV6Ssgmp'
 consumer:
     network: 'tcp'
     brokerAddress: 'localhost:9092'
