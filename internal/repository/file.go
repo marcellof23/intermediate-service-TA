@@ -1,11 +1,11 @@
 package repository
 
 import (
-	"github.com/gin-gonic/gin"
+	"context"
 
 	"github.com/intermediate-service-ta/internal/model"
 )
 
 type FileRepository interface {
-	Create(c *gin.Context, file *model.File) (model.File, error)
+	Create(c context.Context, file *model.File) (model.File, error)
 }

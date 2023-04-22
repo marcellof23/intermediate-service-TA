@@ -1,14 +1,12 @@
 package cmd
 
 import (
-	"context"
 	"log"
 
 	"github.com/spf13/cobra"
 
 	"github.com/intermediate-service-ta/api"
 	"github.com/intermediate-service-ta/boot"
-	"github.com/intermediate-service-ta/internal/consumer"
 )
 
 func init() {
@@ -31,9 +29,6 @@ func init() {
 				log.Fatal(err)
 			}
 			router := api.InitRoutes(dep)
-
-			ctx := context.Background()
-			go consumer.ConsumeCommand(ctx, dep)
 
 			err = router.Run(cfg.Server.Addr)
 			if err != nil {

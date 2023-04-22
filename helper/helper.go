@@ -1,6 +1,7 @@
 package helper
 
 import (
+	"context"
 	"errors"
 	"log"
 
@@ -12,8 +13,10 @@ import (
 	"github.com/intermediate-service-ta/boot"
 )
 
-var ErrDBNotFound = errors.New("failed to get database from context")
-var ErrJWTKeyNotFound = errors.New("failed to get jwt key from context")
+var (
+	ErrDBNotFound     = errors.New("failed to get database from context")
+	ErrJWTKeyNotFound = errors.New("failed to get jwt key from context")
+)
 
 func ClientInitiation(clientType string, cli boot.Client) *s3.S3 {
 	var client *s3.S3
@@ -27,15 +30,11 @@ func ClientInitiation(clientType string, cli boot.Client) *s3.S3 {
 	default:
 		client = cli.ClientMap["s3"]
 	}
-
 	return client
 }
 
-func GetDatabaseFromContext(c *gin.Context) (*gorm.DB, error) {
-	tmp, exists := c.Get("db")
-	if !exists {
-		return nil, ErrDBNotFound
-	}
+func GetDatabaseFromContext(c context.Context) (*gorm.DB, error) {
+	tmp := c.Value("db")
 	db, ok := tmp.(*gorm.DB)
 	if !ok {
 		return nil, ErrDBNotFound
@@ -44,15 +43,24 @@ func GetDatabaseFromContext(c *gin.Context) (*gorm.DB, error) {
 }
 
 func GetJWTSecretFromContext(c *gin.Context) (string, error) {
-	tmp, exists := c.Get("jwt-secret")
+	tmp, exists := c.Get("jwtSecret")
 	if !exists {
 		return "", ErrJWTKeyNotFound
 	}
-	jwtkey, ok := tmp.(string)
+	jwtKey, ok := tmp.(string)
 	if !ok {
 		return "", ErrJWTKeyNotFound
 	}
-	return jwtkey, nil
+	return jwtKey, nil
+}
+
+func GetJWTSecretFromContextQueue(c context.Context) (string, error) {
+	tmp := c.Value("jwtSecret")
+	jwtKey, ok := tmp.(string)
+	if !ok {
+		return "", ErrJWTKeyNotFound
+	}
+	return jwtKey, nil
 }
 
 func GetHash(pwd []byte) string {

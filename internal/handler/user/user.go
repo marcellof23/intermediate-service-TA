@@ -29,13 +29,12 @@ func generateJWT(c *gin.Context, userID int64, username string) (string, error) 
 		return "", err
 	}
 
-	token := jwt.New(jwt.SigningMethodHS256)
-	claims := token.Claims.(jwt.MapClaims)
-
+	claims := jwt.MapClaims{}
 	claims["authorized"] = true
 	claims["user_id"] = userID
 	claims["username"] = username
-	claims["exp"] = time.Now().Add(time.Minute * 30).Unix()
+	claims["exp"] = time.Now().Add(time.Hour * 30).Unix()
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 
 	tokenString, err := token.SignedString([]byte(secretKey))
 

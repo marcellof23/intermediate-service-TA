@@ -11,7 +11,7 @@ import (
 
 type userrepository struct{}
 
-func New() repository_intf.UserRepository {
+func NewUserRepo() repository_intf.UserRepository {
 	return &userrepository{}
 }
 

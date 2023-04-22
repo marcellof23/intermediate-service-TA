@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -46,25 +48,69 @@ func (hdl *IntegratorHandler) ListBuckets(c *gin.Context) {
 	}
 }
 
-func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
+func (hdl *IntegratorHandler) GetFile(c *gin.Context) {
+	clientType := c.PostForm("client")
+	cli, ok := c.MustGet("vdfsClient").(boot.Client)
+	if !ok {
+		fmt.Println("Failed to get client")
+		return
+	}
+
+	client := helper.ClientInitiation(clientType, cli)
+	filename := "ehe"
+
+	result, err := client.GetObject(&s3.GetObjectInput{
+		Bucket: aws.String("testing-vfs"),
+		Key:    aws.String(filename),
+	})
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error":    "Failed to get file",
+			"uploader": err.Error(),
+		})
+		return
+	}
+
+	defer result.Body.Close()
+	file, err := os.Create(filename)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error":    "Failed to get file",
+			"uploader": err.Error(),
+		})
+		return
+	}
+	defer file.Close()
+
+	body, err := io.ReadAll(result.Body)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error":    "Failed to get file",
+			"uploader": err.Error(),
+		})
+		return
+	}
+	_, err = file.Write(body)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error":    "Failed to get file",
+			"uploader": err.Error(),
+		})
+		return
+	}
+}
+
+func (hdl *IntegratorHandler) UploadFile(c *gin.Context) {
 	file, header, err := c.Request.FormFile("photo")
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":        "No values in photo",
-			"uploadObject": err.Error(),
+			"message": "No values in photo",
+			"error":   err.Error(),
 		})
 		return
 	}
 
 	clientType := c.PostForm("client")
-	if clientType == "" {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":        "Parameter in client not found",
-			"uploadObject": err.Error(),
-		})
-		return
-	}
-
 	cli, ok := c.MustGet("vdfsClient").(boot.Client)
 	if !ok {
 		fmt.Println("Failed to get client")
@@ -83,20 +129,19 @@ func (hdl *IntegratorHandler) UploadObject(c *gin.Context) {
 
 	_, err = client.PutObject(&s3.PutObjectInput{
 		Bucket: aws.String("testing-vfs"),
-		Key:    aws.String(header.Filename),
+		Key:    aws.String("./asdf/" + header.Filename),
 		Body:   bytes.NewReader(fileBuffer),
 	})
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":    "Failed to upload file",
-			"uploader": err.Error(),
+			"message": "Failed to upload file",
+			"error":   err.Error(),
 		})
-
 	}
 }
 
-func (hdl *IntegratorHandler) DeleteObject(c *gin.Context) {
+func (hdl *IntegratorHandler) DeleteFile(c *gin.Context) {
 	clientType := c.PostForm("client")
 	if clientType == "" {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -128,4 +173,7 @@ func (hdl *IntegratorHandler) DeleteObject(c *gin.Context) {
 			"delete obj": err.Error(),
 		})
 	}
+}
+
+func (hdl *IntegratorHandler) TestFile(c *gin.Context) {
 }

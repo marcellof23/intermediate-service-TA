@@ -19,11 +19,18 @@ type Config struct {
 	} `yaml:"server"`
 	GoogleAccessKeyID           string `yaml:"googleAccessKeyID"`
 	GoogleAccessKeySecret       string `yaml:"googleAccessKeySecret"`
+	GCSRegion                   string `yaml:"gcsRegion"`
+	GCSEndpoint                 string `yaml:"gcsEndpoint"`
 	DigitalOceanAccessKeyID     string `yaml:"digitalOceanAccessKeyID"`
 	DigitalOceanAccessKeySecret string `yaml:"digitalOceanAccessKeySecret"`
+	DOSRegion                   string `yaml:"dosRegion"`
+	DOSEndpoint                 string `yaml:"dosEndpoint"`
 	AmazonAccessKeyID           string `yaml:"amazonAccessKeyID"`
 	AmazonAccessKeySecret       string `yaml:"amazonAccessKeySecret"`
+	S3Region                    string `yaml:"s3Region"`
+	S3Endpoint                  string `yaml:"s3Endpoint"`
 	JWTSecretKey                string `yaml:"jwtSecretKey"`
+	BucketName                  string `yaml:"bucketName"`
 	Consumer                    `yaml:"consumer"`
 	DatabaseConfig              `yaml:"database"`
 }

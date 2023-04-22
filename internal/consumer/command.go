@@ -12,14 +12,34 @@ import (
 	"github.com/segmentio/kafka-go"
 
 	"github.com/intermediate-service-ta/boot"
+	"github.com/intermediate-service-ta/internal/repository"
 )
+
+var errLogFile *os.File
 
 type Message struct {
 	Command string
+	Token   string
+	AbsPath string
 	Buffer  []byte
 }
 
-func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
+type Consumer struct {
+	fileRepo repository.FileRepository
+	errorLog *log.Logger
+}
+
+func NewConsumer(fileRepo repository.FileRepository) *Consumer {
+	var errFile error
+	errLogFile, errFile = os.OpenFile("error-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if errFile != nil {
+		log.Fatalf("error opening file: %v", errFile)
+	}
+
+	return &Consumer{fileRepo: fileRepo}
+}
+
+func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 	kafkaLogFile, err := os.OpenFile("kafka-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
@@ -30,10 +50,11 @@ func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
 	}
-	defer kafkaLogFile.Close()
+	defer commandLogFile.Close()
 
 	kafkaLog := log.New(kafkaLogFile, "kafka reader: ", 0)
 	commandLog := log.New(commandLogFile, "kafka reader: ", 0)
+	con.errorLog = log.New(errLogFile, "error: ", 0)
 
 	sigchan := make(chan os.Signal, 1)
 	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
@@ -45,10 +66,12 @@ func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
 		Topic:       consumerConf.Topic,
 		Partition:   consumerConf.Partition,
 		MinBytes:    1,
-		MaxBytes:    1e5,
+		MaxBytes:    1e8,
 		ErrorLogger: kafkaLog,
 		MaxAttempts: 3,
 	})
+
+	ctx := context.Background()
 
 	for {
 		select {
@@ -68,8 +91,13 @@ func ConsumeCommand(ctx context.Context, dep *boot.Dependencies) {
 				continue
 			}
 
-			commandLog.Println(msg.Command, msg.Buffer, message.Offset)
-			fmt.Println(msg.Command, msg.Buffer)
+			commandLog.Println(msg.Command, msg.AbsPath)
+			err = con.exec(c, msg, commandLog)
+			if err != nil {
+				fmt.Println(err)
+			}
 		}
 	}
+
+	defer errLogFile.Close()
 }
