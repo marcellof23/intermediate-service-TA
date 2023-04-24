@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"log"
+	"sort"
 
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/gin-gonic/gin"
@@ -14,8 +15,9 @@ import (
 )
 
 var (
-	ErrDBNotFound     = errors.New("failed to get database from context")
-	ErrJWTKeyNotFound = errors.New("failed to get jwt key from context")
+	ErrDBNotFound       = errors.New("failed to get database from context")
+	ErrJWTKeyNotFound   = errors.New("failed to get jwt key from context")
+	ErrUsernameNotFound = errors.New("failed to get username from context")
 )
 
 func ClientInitiation(clientType string, cli boot.Client) *s3.S3 {
@@ -40,6 +42,33 @@ func GetDatabaseFromContext(c context.Context) (*gorm.DB, error) {
 		return nil, ErrDBNotFound
 	}
 	return db, nil
+}
+
+func GetVDFSClientFromContext(c context.Context) (boot.Client, error) {
+	tmp := c.Value("vdfsClient")
+	db, ok := tmp.(boot.Client)
+	if !ok {
+		return boot.Client{}, ErrDBNotFound
+	}
+	return db, nil
+}
+
+func GetBucketNameFromContext(c context.Context) (string, error) {
+	tmp := c.Value("bucketName")
+	bucket, ok := tmp.(string)
+	if !ok {
+		return "", ErrDBNotFound
+	}
+	return bucket, nil
+}
+
+func GetUsernameFromContext(c context.Context) (string, error) {
+	tmp := c.Value("username")
+	uname, ok := tmp.(string)
+	if !ok {
+		return "", ErrUsernameNotFound
+	}
+	return uname, nil
 }
 
 func GetJWTSecretFromContext(c *gin.Context) (string, error) {
@@ -69,4 +98,18 @@ func GetHash(pwd []byte) string {
 		log.Println(err)
 	}
 	return string(hash)
+}
+
+func SortSlice(m map[string]int64) []string {
+	keys := make([]string, 0, len(m))
+
+	for key := range m {
+		keys = append(keys, key)
+	}
+
+	sort.SliceStable(keys, func(i, j int) bool {
+		return m[keys[i]] < m[keys[j]]
+	})
+
+	return keys
 }

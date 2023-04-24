@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"log"
+	"os"
 
 	"github.com/spf13/cobra"
 
@@ -18,6 +19,8 @@ func init() {
 			if len(args) != 0 {
 				configfile = args[0]
 			}
+
+			os.Mkdir("backup", os.ModePerm)
 
 			cfg, err := boot.LoadConfig(configfile)
 			if err != nil {

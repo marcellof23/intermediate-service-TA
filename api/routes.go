@@ -3,6 +3,7 @@ package api
 import (
 	"context"
 	"crypto/tls"
+	"errors"
 	"fmt"
 	"net/http"
 	"time"
@@ -109,10 +110,19 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 		c.Set("jwtSecret", dep.Config().JWTSecretKey)
 	})
 
+	// attach value to context
 	ctx := context.Background()
 	ctx = context.WithValue(ctx, "db", dep.DB())
 	ctx = context.WithValue(ctx, "vdfsClient", client)
 	ctx = context.WithValue(ctx, "jwtSecret", dep.Config().JWTSecretKey)
+	ctx = context.WithValue(ctx, "bucketName", dep.Config().BucketName)
+
+	// init total size client
+	var errs error
+	repository.TotalSizeClient, errs = fileRepo.GetTotalSizeClient(ctx)
+	if errs != nil {
+		panic(errors.New("failed to get total client size"))
+	}
 
 	// init consumer
 	consumer := consumer.NewConsumer(fileRepo)

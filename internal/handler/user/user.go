@@ -127,5 +127,4 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 		"data":    user,
 		"token":   tokenString,
 	})
-
 }

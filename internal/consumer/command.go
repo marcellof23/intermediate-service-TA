@@ -18,10 +18,11 @@ import (
 var errLogFile *os.File
 
 type Message struct {
-	Command string
-	Token   string
-	AbsPath string
-	Buffer  []byte
+	Command       string
+	Token         string
+	AbsPathSource string
+	AbsPathDest   string
+	Buffer        []byte
 }
 
 type Consumer struct {
@@ -91,8 +92,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 				continue
 			}
 
-			commandLog.Println(msg.Command, msg.AbsPath)
-			err = con.exec(c, msg, commandLog)
+			err = con.AuthQueue(c, msg, commandLog)
 			if err != nil {
 				fmt.Println(err)
 			}

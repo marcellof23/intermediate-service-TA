@@ -4,6 +4,8 @@ import (
 	"github.com/intermediate-service-ta/internal/model"
 )
 
+var MemorySlice map[string]int
+
 type File struct {
 	Base
 	ID           int64  `gorm:"varchar(255);primary_key;not null"`

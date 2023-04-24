@@ -11,6 +11,7 @@ import (
 
 var (
 	Clients = []string{"gcs", "dos", "s3"}
+	Backup  = "backup"
 )
 
 type Config struct {

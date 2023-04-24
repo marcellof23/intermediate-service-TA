@@ -6,7 +6,10 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"os"
+	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -15,22 +18,73 @@ import (
 	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/helper"
 	"github.com/intermediate-service-ta/internal/model"
+	"github.com/intermediate-service-ta/internal/storage"
 )
 
-func verifyJWTQueue(ctx context.Context, msg Message) error {
+func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error {
+	uname, err := helper.GetUsernameFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	log.Println(msg.Command, msg.AbsPathSource, uname)
+
+	comms := strings.Split(msg.Command, " ")
+	switch comms[0] {
+	case "upload":
+		con.UploadFile(c, msg)
+	case "rm":
+		if len(comms) > 1 && comms[1] == "-r" {
+			con.RemoveDir(c, msg)
+		} else {
+			con.RemoveFile(c, msg)
+		}
+	case "mkdir":
+		con.CreateFolder(c, msg)
+	default:
+		fmt.Println(comms[0], ": Command not found")
+		return errors.New("command not found")
+	}
+
+	return nil
+}
+
+type Effector func(context.Context, Message) error
+
+func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
+	return func(ctx context.Context, msg Message) error {
+		for {
+			err := effector(ctx, msg)
+			if err != nil {
+				con.errorLog.Println(err)
+				return err
+			}
+
+			select {
+			case <-time.After(delay):
+			case <-ctx.Done():
+				return ctx.Err()
+			}
+		}
+	}
+}
+
+func (con *Consumer) AuthQueue(ctx context.Context, msg Message, log *log.Logger) error {
 	if msg.Token != "" {
 		secretKey, err := helper.GetJWTSecretFromContextQueue(ctx) // Get secret key if exist
 		if err != nil {
 			return err
 		}
 
-		token, err := jwt.Parse(msg.Token, func(token *jwt.Token) (interface{}, error) {
+		claims := jwt.MapClaims{}
+		token, err := jwt.ParseWithClaims(msg.Token, claims, func(token *jwt.Token) (interface{}, error) {
 			_, ok := token.Method.(*jwt.SigningMethodHMAC)
 			if !ok {
 				return "", errors.New("unauthorized")
 			}
 			return []byte(secretKey), nil
 		})
+		ctx = context.WithValue(ctx, "username", claims["username"])
 
 		// parsing errors result
 		if err != nil {
@@ -38,6 +92,10 @@ func verifyJWTQueue(ctx context.Context, msg Message) error {
 		}
 		// if there's a token
 		if token.Valid {
+			err = con.exec(ctx, msg, log)
+			if err != nil {
+				fmt.Println(err)
+			}
 			return nil
 		} else {
 			return errors.New("invalid token")
@@ -47,37 +105,32 @@ func verifyJWTQueue(ctx context.Context, msg Message) error {
 	}
 }
 
-func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error {
-	err := verifyJWTQueue(c, msg)
+func BackupFiletoDisk(ctx context.Context, msg Message) error {
+	osFile, err := os.Create(filepath.Join(boot.Backup, filepath.Join(msg.AbsPathDest, msg.AbsPathSource)))
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
+	defer osFile.Close()
 
-	comms := strings.Split(msg.Command, " ")
-	switch comms[0] {
-	case "upload":
-		con.UploadFile(c, msg)
-	case "rm":
-		if len(comms) > 1 && comms[1] == "-r" {
-		} else {
-		}
-	case "mkdir":
-	case "touch":
-	default:
-		fmt.Println(comms[0], ": Command not found")
-		return errors.New("command not found")
+	_, err = osFile.Write(msg.Buffer)
+	if err != nil {
+		fmt.Println(err)
+		return err
 	}
 
 	return nil
 }
-
 func (con *Consumer) UploadFile(c context.Context, msg Message) {
+	arrRes := helper.SortSlice(storage.TotalSizeClient)
+	fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
 	file := model.File{
-		Filename:     msg.AbsPath,
-		OriginalName: msg.AbsPath,
-		Client:       "gcs",
+		Filename:     fullPath,
+		OriginalName: fullPath,
+		Client:       arrRes[0],
 		Size:         int64(len(msg.Buffer)),
 	}
+	storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
 
 	fl, err := con.fileRepo.Create(c, &file)
 	if err != nil {
@@ -85,15 +138,21 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 		return
 	}
 
-	cli, ok := c.Value("vdfsClient").(boot.Client)
-	if !ok {
-		fmt.Println("Failed to get client")
+	cli, err := helper.GetVDFSClientFromContext(c)
+	if err != nil {
+		fmt.Println(err)
 		return
 	}
-	client := helper.ClientInitiation("gcs", cli)
+	client := helper.ClientInitiation(arrRes[0], cli)
+
+	bucketName, err := helper.GetBucketNameFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	_, err = client.PutObject(&s3.PutObjectInput{
-		Bucket: aws.String("bucket_vfs_1"),
+		Bucket: aws.String(bucketName),
 		Key:    aws.String(fl.Filename),
 		Body:   bytes.NewReader(msg.Buffer),
 	})
@@ -102,4 +161,43 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 		return
 	}
 
+	r := con.Retry(BackupFiletoDisk, 3e9)
+	go r(c, msg)
+}
+
+func (con *Consumer) CreateFolder(c context.Context, msg Message) {
+	err := os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+func (con *Consumer) RemoveFile(c context.Context, msg Message) {
+	file, err := con.fileRepo.Delete(c, msg.AbsPathSource)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	cli, err := helper.GetVDFSClientFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	client := helper.ClientInitiation(file.Client, cli)
+
+	bucketName, err := helper.GetBucketNameFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	_, err = client.DeleteObject(&s3.DeleteObjectInput{
+		Bucket: aws.String(bucketName),
+		Key:    aws.String(file.Filename),
+	})
+}
+
+func (con *Consumer) RemoveDir(c context.Context, msg Message) {
 }
