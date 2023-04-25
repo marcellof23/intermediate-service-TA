@@ -4,3 +4,4 @@ vendor
 command-log
 kafka-log
 data
+backup
