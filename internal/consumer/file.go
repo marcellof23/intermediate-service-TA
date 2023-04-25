@@ -237,7 +237,7 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		CopySource: aws.String(msg.AbsPathSource),
 	})
 
-	err = CopypFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
+	err = CopyFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
 	if err != nil {
 		fmt.Println(err)
 		return

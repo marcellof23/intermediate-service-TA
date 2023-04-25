@@ -94,6 +94,5 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 		}
 	}
 
-	defer close(sigchan)
 	defer errLogFile.Close()
 }

@@ -27,7 +27,7 @@ func BackupFiletoDisk(ctx context.Context, msg Message) error {
 	return nil
 }
 
-func CopypFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
+func CopyFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
 	originalFile, err := os.Open(pathSource)
 	if err != nil {
 		return err
