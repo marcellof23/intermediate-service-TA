@@ -3,5 +3,6 @@ vendor
 .idea
 command-log
 kafka-log
+error-log
 data
 backup
