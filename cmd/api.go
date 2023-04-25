@@ -1,8 +1,11 @@
 package cmd
 
 import (
+	"fmt"
 	"log"
 	"os"
+	"os/signal"
+	"syscall"
 
 	"github.com/spf13/cobra"
 
@@ -27,17 +30,19 @@ func init() {
 				log.Fatal(err)
 			}
 
+			sigchan := make(chan os.Signal, 1)
+			signal.Notify(sigchan, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+
 			dep, err := boot.InitDependencies(cfg)
 			if err != nil {
 				log.Fatal(err)
 			}
-			router := api.InitRoutes(dep)
+			router := api.InitRoutes(dep, sigchan)
 
-			err = router.Run(cfg.Server.Addr)
-			if err != nil {
-				log.Fatal(err)
-			}
+			go router.Run(cfg.Server.Addr)
+			<-sigchan
 
+			fmt.Println("Shutting down...")
 		},
 	}
 

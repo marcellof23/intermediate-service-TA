@@ -43,11 +43,10 @@ func handler(signal os.Signal) {
 	}
 }
 
-func main() {
+func tes() chan int {
 	sigchnl := make(chan os.Signal, 1)
 	signal.Notify(sigchnl)
 	exitchnl := make(chan int)
-
 	go func() {
 		for {
 			select {
@@ -60,8 +59,11 @@ func main() {
 
 		}
 	}()
+	return exitchnl
+}
 
-	exitcode := <-exitchnl
+func main() {
+	exitcode := <-tes()
 	fmt.Println("Ignoring signal: ")
 	os.Exit(exitcode)
 }

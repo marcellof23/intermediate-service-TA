@@ -4,6 +4,7 @@ import (
 	"context"
 	"sync"
 
+	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/helper"
 	"github.com/intermediate-service-ta/internal/model"
 	repository_intf "github.com/intermediate-service-ta/internal/repository"
@@ -81,10 +82,14 @@ func (fr *filerepository) GetTotalSizeClient(c context.Context) (map[string]int6
 		m[v.Client] = v.TotalSize
 	}
 
-	if len(m) == 0 {
-		m["gcs"] = 0
-		m["dos"] = 0
-		m["s3"] = 0
+	idx := 0
+	for range m {
+		client := boot.Clients[idx]
+		_, isKeyPresent := m[client]
+		if !isKeyPresent {
+			m[client] = 0
+		}
+		idx++
 	}
 
 	return m, nil

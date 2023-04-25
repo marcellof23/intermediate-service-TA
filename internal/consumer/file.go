@@ -48,7 +48,6 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 	case "mkdir":
 		con.CreateFolder(c, msg)
 	default:
-		fmt.Println(comms[0], ": Command not found")
 		return errors.New("command not found")
 	}
 
@@ -65,7 +64,7 @@ func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 				return nil
 			}
 
-			con.errorLog.Printf("Function call failed, retrying in %v", delay)
+			con.errorLog.Printf("Function call failed, retrying in %v err: %s", delay, err.Error())
 
 			select {
 			case <-time.After(delay):
@@ -125,20 +124,20 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 
 	fl, err := con.fileRepo.Create(c, &file)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
 	cli, err := helper.GetVDFSClientFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 	client := helper.ClientInitiation(arrRes[0], cli)
 
 	bucketName, err := helper.GetBucketNameFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
@@ -148,7 +147,7 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 		Body:   bytes.NewReader(msg.Buffer),
 	})
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
@@ -159,7 +158,7 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 func (con *Consumer) CreateFolder(c context.Context, msg Message) {
 	err := os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 }
@@ -167,20 +166,20 @@ func (con *Consumer) CreateFolder(c context.Context, msg Message) {
 func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 	file, err := con.fileRepo.Delete(c, msg.AbsPathSource)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
 	cli, err := helper.GetVDFSClientFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 	client := helper.ClientInitiation(file.Client, cli)
 
 	bucketName, err := helper.GetBucketNameFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
@@ -191,7 +190,7 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 
 	err = os.Remove(filepath.Join(boot.Backup, msg.AbsPathSource))
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 }
@@ -199,7 +198,7 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 func (con *Consumer) CopyFile(c context.Context, msg Message) {
 	flSource, err := con.fileRepo.Get(c, msg.AbsPathSource)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
@@ -214,20 +213,20 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 
 	fl, err := con.fileRepo.Create(c, &file)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
 	cli, err := helper.GetVDFSClientFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 	client := helper.ClientInitiation(arrRes[0], cli)
 
 	bucketName, err := helper.GetBucketNameFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 
@@ -239,7 +238,7 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 
 	err = CopyFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
 	if err != nil {
-		fmt.Println(err)
+		con.errorLog.Println(err)
 		return
 	}
 }

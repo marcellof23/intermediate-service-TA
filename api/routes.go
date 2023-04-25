@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -87,7 +88,7 @@ func initClient(dep *boot.Dependencies, sess boot.Sess) boot.Client {
 	}
 }
 
-func InitRoutes(dep *boot.Dependencies) *gin.Engine {
+func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	// init repos
 	userRepo := repository.NewUserRepo()
 	fileRepo := repository.NewFileRepo()
@@ -125,10 +126,9 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 	}
 
 	// init consumer
-
 	consumer := consumer.NewConsumer(fileRepo)
-	go consumer.ConsumeCommand(ctx, dep)
-
+	go consumer.ConsumeCommand(ctx, dep, sigchan)
+	fmt.Println("AASDA")
 	// setup cors config
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},

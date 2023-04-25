@@ -3,10 +3,9 @@ package consumer
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
-	"os/signal"
+	"time"
 
 	"github.com/segmentio/kafka-go"
 
@@ -39,7 +38,7 @@ func NewConsumer(fileRepo repository.FileRepository) *Consumer {
 	return &Consumer{fileRepo: fileRepo}
 }
 
-func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
+func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, sigchan chan os.Signal) {
 	kafkaLogFile, err := os.OpenFile("kafka-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if err != nil {
 		log.Fatalf("error opening file: %v", err)
@@ -66,11 +65,10 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 		MaxBytes:    1e8,
 		ErrorLogger: kafkaLog,
 	})
+	defer reader.Close()
+	defer errLogFile.Close()
 
 	ctx := context.Background()
-	sigchan := make(chan os.Signal, 1)
-	signal.Notify(sigchan, os.Interrupt)
-
 	for {
 		select {
 		case <-sigchan:
@@ -87,12 +85,8 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 				kafkaLog.Println("failed to unmarshal:", err)
 			}
 
-			err = con.AuthQueue(c, msg, commandLog)
-			if err != nil {
-				fmt.Println(err)
-			}
+			con.AuthQueue(c, msg, commandLog)
+			time.Sleep(1 * time.Second)
 		}
 	}
-
-	defer errLogFile.Close()
 }
