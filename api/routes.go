@@ -125,6 +125,7 @@ func InitRoutes(dep *boot.Dependencies) *gin.Engine {
 	}
 
 	// init consumer
+
 	consumer := consumer.NewConsumer(fileRepo)
 	go consumer.ConsumeCommand(ctx, dep)
 

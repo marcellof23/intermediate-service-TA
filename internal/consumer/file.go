@@ -33,6 +33,12 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 	switch comms[0] {
 	case "upload":
 		con.UploadFile(c, msg)
+	case "cp":
+		if len(comms) > 1 && comms[1] == "-r" {
+			con.CopyDir(c, msg)
+		} else {
+			con.CopyFile(c, msg)
+		}
 	case "rm":
 		if len(comms) > 1 && comms[1] == "-r" {
 			con.RemoveDir(c, msg)
@@ -55,10 +61,11 @@ func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 	return func(ctx context.Context, msg Message) error {
 		for {
 			err := effector(ctx, msg)
-			if err != nil {
-				con.errorLog.Println(err)
-				return err
+			if err == nil {
+				return nil
 			}
+
+			con.errorLog.Printf("Function call failed, retrying in %v", delay)
 
 			select {
 			case <-time.After(delay):
@@ -105,22 +112,6 @@ func (con *Consumer) AuthQueue(ctx context.Context, msg Message, log *log.Logger
 	}
 }
 
-func BackupFiletoDisk(ctx context.Context, msg Message) error {
-	osFile, err := os.Create(filepath.Join(boot.Backup, filepath.Join(msg.AbsPathDest, msg.AbsPathSource)))
-	if err != nil {
-		fmt.Println(err)
-		return err
-	}
-	defer osFile.Close()
-
-	_, err = osFile.Write(msg.Buffer)
-	if err != nil {
-		fmt.Println(err)
-		return err
-	}
-
-	return nil
-}
 func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	arrRes := helper.SortSlice(storage.TotalSizeClient)
 	fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
@@ -197,6 +188,73 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 		Bucket: aws.String(bucketName),
 		Key:    aws.String(file.Filename),
 	})
+
+	err = os.Remove(filepath.Join(boot.Backup, msg.AbsPathSource))
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+func (con *Consumer) CopyFile(c context.Context, msg Message) {
+	flSource, err := con.fileRepo.Get(c, msg.AbsPathSource)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	arrRes := helper.SortSlice(storage.TotalSizeClient)
+	file := model.File{
+		Filename:     msg.AbsPathSource,
+		OriginalName: msg.AbsPathSource,
+		Client:       arrRes[0],
+		Size:         flSource.Size,
+	}
+	storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
+
+	fl, err := con.fileRepo.Create(c, &file)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	cli, err := helper.GetVDFSClientFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	client := helper.ClientInitiation(arrRes[0], cli)
+
+	bucketName, err := helper.GetBucketNameFromContext(c)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	_, err = client.CopyObject(&s3.CopyObjectInput{
+		Bucket:     aws.String(bucketName),
+		Key:        aws.String(fl.Filename),
+		CopySource: aws.String(msg.AbsPathSource),
+	})
+
+	err = CopypFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+
+func (con *Consumer) CopyDir(c context.Context, msg Message) {
+	//arrRes := helper.SortSlice(storage.TotalSizeClient)
+	//fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
+	//file := model.File{
+	//	Filename:     fullPath,
+	//	OriginalName: fullPath,
+	//	Client:       arrRes[0],
+	//	Size:         int64(len(msg.Buffer)),
+	//}
+	//storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
+
 }
 
 func (con *Consumer) RemoveDir(c context.Context, msg Message) {

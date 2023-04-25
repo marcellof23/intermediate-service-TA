@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 	"os/signal"
-	"syscall"
 
 	"github.com/segmentio/kafka-go"
 
@@ -57,9 +56,6 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 	commandLog := log.New(commandLogFile, "kafka reader: ", 0)
 	con.errorLog = log.New(errLogFile, "error: ", 0)
 
-	sigchan := make(chan os.Signal, 1)
-	signal.Notify(sigchan, syscall.SIGINT, syscall.SIGTERM)
-
 	consumerConf := dep.Config().Consumer
 	reader := kafka.NewReader(kafka.ReaderConfig{
 		Brokers:     []string{consumerConf.BrokerAddress},
@@ -69,10 +65,11 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 		MinBytes:    1,
 		MaxBytes:    1e8,
 		ErrorLogger: kafkaLog,
-		MaxAttempts: 3,
 	})
 
 	ctx := context.Background()
+	sigchan := make(chan os.Signal, 1)
+	signal.Notify(sigchan, os.Interrupt)
 
 	for {
 		select {
@@ -83,13 +80,11 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 			message, err := reader.ReadMessage(ctx)
 			if err != nil {
 				kafkaLog.Println("Error reading message from Kafka:", err)
-				continue
 			}
 
 			var msg Message
 			if err := json.Unmarshal(message.Value, &msg); err != nil {
 				kafkaLog.Println("failed to unmarshal:", err)
-				continue
 			}
 
 			err = con.AuthQueue(c, msg, commandLog)
@@ -99,5 +94,6 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies) {
 		}
 	}
 
+	defer close(sigchan)
 	defer errLogFile.Close()
 }

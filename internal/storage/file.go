@@ -4,8 +4,6 @@ import (
 	"context"
 	"sync"
 
-	"github.com/gin-gonic/gin"
-
 	"github.com/intermediate-service-ta/helper"
 	"github.com/intermediate-service-ta/internal/model"
 	repository_intf "github.com/intermediate-service-ta/internal/repository"
@@ -35,7 +33,7 @@ func (fr *filerepository) Create(c context.Context, file *model.File) (model.Fil
 	return *file, nil
 }
 
-func (fr *filerepository) Get(c *gin.Context, filename string) (model.File, error) {
+func (fr *filerepository) Get(c context.Context, filename string) (model.File, error) {
 	var file dao.File
 	db, err := helper.GetDatabaseFromContext(c) // Get model if exist
 	if err != nil {
@@ -81,6 +79,12 @@ func (fr *filerepository) GetTotalSizeClient(c context.Context) (map[string]int6
 	m := make(map[string]int64, 0)
 	for _, v := range res {
 		m[v.Client] = v.TotalSize
+	}
+
+	if len(m) == 0 {
+		m["gcs"] = 0
+		m["dos"] = 0
+		m["s3"] = 0
 	}
 
 	return m, nil
