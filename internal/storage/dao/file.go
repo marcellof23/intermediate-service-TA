@@ -21,6 +21,7 @@ func ToFileDAO(f *model.File) *File {
 		Filename:     f.Filename,
 		OriginalName: f.OriginalName,
 		Size:         f.Size,
+		Client:       f.Client,
 		Base: Base{
 			CreatedAt: f.CreatedAt,
 			UpdatedAt: f.UpdatedAt,
@@ -34,6 +35,7 @@ func ToFileDTO(f File) model.File {
 		Filename:     f.Filename,
 		OriginalName: f.OriginalName,
 		Size:         f.Size,
+		Client:       f.Client,
 		Base: model.Base{
 			CreatedAt: f.CreatedAt,
 			UpdatedAt: f.UpdatedAt,

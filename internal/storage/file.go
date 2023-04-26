@@ -50,9 +50,13 @@ func (fr *filerepository) Get(c context.Context, filename string) (model.File, e
 }
 
 func (fr *filerepository) Delete(c context.Context, filename string) (model.File, error) {
-	var file dao.File
+	var file, getFile dao.File
 	db, err := helper.GetDatabaseFromContext(c) // Get model if exist
 	if err != nil {
+		return model.File{}, err
+	}
+
+	if err := db.Where("filename = ?", filename).First(&getFile).Error; err != nil {
 		return model.File{}, err
 	}
 
@@ -60,7 +64,7 @@ func (fr *filerepository) Delete(c context.Context, filename string) (model.File
 		return model.File{}, err
 	}
 
-	return dao.ToFileDTO(file), nil
+	return dao.ToFileDTO(getFile), nil
 }
 
 type ResultClientSize struct {
@@ -82,14 +86,11 @@ func (fr *filerepository) GetTotalSizeClient(c context.Context) (map[string]int6
 		m[v.Client] = v.TotalSize
 	}
 
-	idx := 0
-	for range m {
-		client := boot.Clients[idx]
-		_, isKeyPresent := m[client]
+	for _, val := range boot.Clients {
+		_, isKeyPresent := m[val]
 		if !isKeyPresent {
-			m[client] = 0
+			m[val] = 0
 		}
-		idx++
 	}
 
 	return m, nil

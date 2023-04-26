@@ -175,6 +175,7 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 		con.errorLog.Println(err)
 		return
 	}
+
 	client := helper.ClientInitiation(file.Client, cli)
 
 	bucketName, err := helper.GetBucketNameFromContext(c)
@@ -188,11 +189,8 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 		Key:    aws.String(file.Filename),
 	})
 
-	err = os.Remove(filepath.Join(boot.Backup, msg.AbsPathSource))
-	if err != nil {
-		con.errorLog.Println(err)
-		return
-	}
+	r := con.Retry(RemoveFileFromDisk, 3e9)
+	go r(c, msg)
 }
 
 func (con *Consumer) CopyFile(c context.Context, msg Message) {
@@ -257,4 +255,6 @@ func (con *Consumer) CopyDir(c context.Context, msg Message) {
 }
 
 func (con *Consumer) RemoveDir(c context.Context, msg Message) {
+	r := con.Retry(RemoveFolderFromDisk, 3e9)
+	go r(c, msg)
 }

@@ -163,14 +163,14 @@ func (hdl *IntegratorHandler) DeleteFile(c *gin.Context) {
 	client := helper.ClientInitiation(clientType, cli)
 
 	_, err := client.DeleteObject(&s3.DeleteObjectInput{
-		Bucket: aws.String("bucket_vfs_12"),
-		Key:    aws.String("Screenshot from 2022-07-20 16-37-42.png"),
+		Bucket: aws.String("testing-vdfs"),
+		Key:    aws.String("h/logger.go"),
 	})
 
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":      "Failed to upload file",
-			"delete obj": err.Error(),
+			"message": "Failed to delete file",
+			"error":   err.Error(),
 		})
 	}
 }

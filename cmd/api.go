@@ -31,6 +31,7 @@ func init() {
 			if err != nil {
 				log.Fatal(err)
 			}
+			boot.Clients = cfg.Clients
 
 			sigchan := make(chan os.Signal, 1)
 			signal.Notify(sigchan, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)

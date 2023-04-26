@@ -24,6 +24,22 @@ func BackupFiletoDisk(ctx context.Context, msg Message) error {
 	return nil
 }
 
+func RemoveFileFromDisk(ctx context.Context, msg Message) error {
+	err := os.RemoveAll(filepath.Join(boot.Backup, msg.AbsPathSource))
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
+	err := os.RemoveAll(filepath.Join(boot.Backup, msg.AbsPathSource))
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func CopyFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
 	originalFile, err := os.Open(pathSource)
 	if err != nil {
