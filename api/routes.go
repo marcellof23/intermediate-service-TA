@@ -128,7 +128,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	// init consumer
 	consumer := consumer.NewConsumer(fileRepo)
 	go consumer.ConsumeCommand(ctx, dep, sigchan)
-	fmt.Println("AASDA")
+
 	// setup cors config
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},

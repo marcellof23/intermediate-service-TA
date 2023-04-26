@@ -33,11 +33,11 @@ func handler(signal os.Signal) {
 	if signal == syscall.SIGTERM {
 		fmt.Println("Got kill signal. ")
 		fmt.Println("Program will terminate now.")
-		os.Exit(0)
+		return
 	} else if signal == syscall.SIGINT {
 		fmt.Println("Got CTRL+C signal")
 		fmt.Println("Closing.")
-		os.Exit(0)
+		return
 	} else {
 		fmt.Println("Ignoring signal: ", signal)
 	}
@@ -53,6 +53,7 @@ func tes() chan int {
 			case <-sigchnl:
 				s := <-sigchnl
 				handler(s)
+				return
 			default:
 				fmt.Println("AA")
 			}
@@ -63,7 +64,13 @@ func tes() chan int {
 }
 
 func main() {
+	sigchnl := make(chan os.Signal, 1)
+	signal.Notify(sigchnl)
 	exitcode := <-tes()
 	fmt.Println("Ignoring signal: ")
+	defer func() {
+		fmt.Println("halo")
+	}()
+	<-sigchnl
 	os.Exit(exitcode)
 }
