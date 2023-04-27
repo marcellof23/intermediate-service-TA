@@ -158,6 +158,8 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 			apiV1File.DELETE("/object", integrateHdl.DeleteFile)
 		}
 
+		apiV1.GET("/backup", integrateHdl.GetFolder)
+
 		apiV1UserNoAuth := apiV1.Group("/user")
 		{
 			apiV1UserNoAuth.POST("/login", userHdl.Login)
