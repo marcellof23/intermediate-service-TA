@@ -244,7 +244,8 @@ func (hdl *IntegratorHandler) GetFolder(c *gin.Context) {
 	c.Header("Content-Type", "application/zip")
 	c.Header("Content-Disposition", "attachment; filename=backup.zip")
 	zipFile, err := os.Open("backup.zip")
-	defer os.Remove("backup.zip")
+	defer zipFile.Close()
+	defer os.RemoveAll("backup.zip")
 
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)

@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"log"
-	"math"
 	"os"
 	"time"
 
@@ -21,6 +20,7 @@ type Message struct {
 	Token         string
 	AbsPathSource string
 	AbsPathDest   string
+	FileMode      uint64
 	Buffer        []byte
 }
 
@@ -63,7 +63,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 		Topic:       consumerConf.Topic,
 		Partition:   consumerConf.Partition,
 		MinBytes:    1,
-		MaxBytes:    math.MaxInt32,
+		MaxBytes:    1e9,
 		ErrorLogger: kafkaLog,
 	})
 	defer reader.Close()
@@ -87,7 +87,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 			}
 
 			con.AuthQueue(c, msg, commandLog)
-			time.Sleep(1 * time.Second)
+			time.Sleep(300 * time.Millisecond)
 		}
 	}
 }

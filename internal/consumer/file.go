@@ -33,12 +33,10 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 	switch comms[0] {
 	case "upload":
 		con.UploadFile(c, msg)
+	case "chmod":
+		con.ChangeFileMode(c, msg)
 	case "cp":
-		if len(comms) > 1 && comms[1] == "-r" {
-			con.CopyDir(c, msg)
-		} else {
-			con.CopyFile(c, msg)
-		}
+		con.CopyFile(c, msg)
 	case "rm":
 		if len(comms) > 1 && comms[1] == "-r" {
 			con.RemoveDir(c, msg)
@@ -58,9 +56,9 @@ type Effector func(context.Context, Message) error
 
 func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 	return func(ctx context.Context, msg Message) error {
-		for {
+		for r := 0; ; r++ {
 			err := effector(ctx, msg)
-			if err == nil {
+			if err == nil || r >= 20 {
 				return nil
 			}
 
@@ -155,6 +153,14 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	go r(c, msg)
 }
 
+func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
+	err := os.Chmod(filepath.Join(boot.Backup, msg.AbsPathSource), os.FileMode(msg.FileMode))
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+}
+
 func (con *Consumer) CreateFolder(c context.Context, msg Message) {
 	err := os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
 	if err != nil {
@@ -238,23 +244,8 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		return
 	}
 
-	err = CopyFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
-	if err != nil {
-		con.errorLog.Println(err)
-		return
-	}
-}
-
-func (con *Consumer) CopyDir(c context.Context, msg Message) {
-	//arrRes := helper.SortSlice(storage.TotalSizeClient)
-	//fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
-	//file := model.File{
-	//	Filename:     fullPath,
-	//	OriginalName: fullPath,
-	//	Client:       arrRes[0],
-	//	Size:         int64(len(msg.Buffer)),
-	//}
-	//storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
+	r := con.Retry(CopyFiletoDisk, 3e9)
+	go r(c, msg)
 
 }
 

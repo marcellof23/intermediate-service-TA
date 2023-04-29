@@ -40,16 +40,16 @@ func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
 	return nil
 }
 
-func CopyFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
-	os.MkdirAll(filepath.Join(boot.Backup, pathSource), os.ModePerm)
+func CopyFiletoDisk(ctx context.Context, msg Message) error {
+	os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
 
-	originalFile, err := os.Open(filepath.Join(boot.Backup, pathSource))
+	originalFile, err := os.Open(filepath.Join(boot.Backup, msg.AbsPathSource))
 	if err != nil {
 		return err
 	}
 	defer originalFile.Close()
 
-	newFile, err := os.Create(filepath.Join(boot.Backup, pathDest))
+	newFile, err := os.Create(filepath.Join(boot.Backup, msg.AbsPathDest))
 	if err != nil {
 		return err
 	}
