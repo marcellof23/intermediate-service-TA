@@ -41,13 +41,15 @@ func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
 }
 
 func CopyFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
-	originalFile, err := os.Open(pathSource)
+	os.MkdirAll(filepath.Join(boot.Backup, pathSource), os.ModePerm)
+
+	originalFile, err := os.Open(filepath.Join(boot.Backup, pathSource))
 	if err != nil {
 		return err
 	}
 	defer originalFile.Close()
 
-	newFile, err := os.Create(pathDest)
+	newFile, err := os.Create(filepath.Join(boot.Backup, pathDest))
 	if err != nil {
 		return err
 	}
@@ -60,3 +62,24 @@ func CopyFiletoDisk(ctx context.Context, pathSource, pathDest string) error {
 
 	return nil
 }
+
+//func CopyDirtoDisk(ctx context.Context, pathSource, pathDest string) error {
+//	originalDir, err := os.ReadDir(pathSource)
+//	if err != nil {
+//		return err
+//	}
+//	defer originalDir.Close()
+//
+//	newFile, err := os.Create(pathDest)
+//	if err != nil {
+//		return err
+//	}
+//	defer newFile.Close()
+//
+//	_, err = io.Copy(newFile, originalFile)
+//	if err != nil {
+//		return err
+//	}
+//
+//	return nil
+//}

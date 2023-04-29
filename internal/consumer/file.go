@@ -200,14 +200,13 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		return
 	}
 
-	arrRes := helper.SortSlice(storage.TotalSizeClient)
 	file := model.File{
-		Filename:     msg.AbsPathSource,
-		OriginalName: msg.AbsPathSource,
-		Client:       arrRes[0],
+		Filename:     msg.AbsPathDest,
+		OriginalName: msg.AbsPathDest,
+		Client:       flSource.Client,
 		Size:         flSource.Size,
 	}
-	storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
+	storage.UpdateTotalSizeClient(flSource.Client, int64(len(msg.Buffer)))
 
 	fl, err := con.fileRepo.Create(c, &file)
 	if err != nil {
@@ -220,7 +219,7 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		con.errorLog.Println(err)
 		return
 	}
-	client := helper.ClientInitiation(arrRes[0], cli)
+	client := helper.ClientInitiation(flSource.Client, cli)
 
 	bucketName, err := helper.GetBucketNameFromContext(c)
 	if err != nil {
@@ -231,8 +230,13 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 	_, err = client.CopyObject(&s3.CopyObjectInput{
 		Bucket:     aws.String(bucketName),
 		Key:        aws.String(fl.Filename),
-		CopySource: aws.String(msg.AbsPathSource),
+		CopySource: aws.String(fmt.Sprintf("%v/%v", bucketName, msg.AbsPathSource)),
 	})
+	fmt.Println(bucketName, fl.Filename, msg.AbsPathSource)
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
 
 	err = CopyFiletoDisk(c, msg.AbsPathSource, msg.AbsPathDest)
 	if err != nil {

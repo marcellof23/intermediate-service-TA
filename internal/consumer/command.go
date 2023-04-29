@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"log"
+	"math"
 	"os"
 	"time"
 
@@ -62,7 +63,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 		Topic:       consumerConf.Topic,
 		Partition:   consumerConf.Partition,
 		MinBytes:    1,
-		MaxBytes:    1e8,
+		MaxBytes:    math.MaxInt32,
 		ErrorLogger: kafkaLog,
 	})
 	defer reader.Close()
