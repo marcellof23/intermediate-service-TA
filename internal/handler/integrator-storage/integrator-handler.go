@@ -9,6 +9,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"time"
 
@@ -244,8 +245,9 @@ func (hdl *IntegratorHandler) GetFolder(c *gin.Context) {
 	c.Header("Content-Type", "application/zip")
 	c.Header("Content-Disposition", "attachment; filename=backup.zip")
 	zipFile, err := os.Open("backup.zip")
+	fmt.Println(zipFile.Stat())
 	defer zipFile.Close()
-	defer os.RemoveAll("backup.zip")
+	//defer os.RemoveAll("backup.zip")
 
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
@@ -257,4 +259,56 @@ func (hdl *IntegratorHandler) GetFolder(c *gin.Context) {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return
 	}
+}
+
+func GetPath(client string, conf boot.Rclone) string {
+	switch client {
+	case "gcs":
+		return conf.GcsConfig
+	case "dos":
+		return conf.DosConfig
+	case "s3":
+		return conf.S3Config
+	}
+	return ""
+}
+
+func (hdl *IntegratorHandler) MigrateObjects(c *gin.Context) {
+	rcloneConf, ok := c.MustGet("rclone").(boot.Rclone)
+	if !ok {
+		fmt.Println("Failed to get rclone config")
+		return
+	}
+
+	clientSource := c.PostForm("clientSource")
+	if clientSource == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Parameter in clientSource not found",
+		})
+		return
+	}
+
+	clientDest := c.PostForm("clientDest")
+	if clientDest == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Parameter in clientDest not found",
+		})
+		return
+	}
+
+	srcMigration := GetPath(clientSource, rcloneConf)
+	dstMigration := GetPath(clientDest, rcloneConf)
+	cmd := exec.Command("rclone", "moveto", srcMigration+"/", dstMigration+"/")
+
+	// Run the rclone command and print any errors
+	_, err := cmd.CombinedOutput()
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+		"message": fmt.Sprintf("Successfully migrate from %s to %s", clientSource, clientDest),
+	})
 }

@@ -33,8 +33,15 @@ type Config struct {
 	JWTSecretKey                string   `yaml:"jwtSecretKey"`
 	BucketName                  string   `yaml:"bucketName"`
 	Clients                     []string `yaml:"clients"`
+	Rclone                      `yaml:"rclone"`
 	Consumer                    `yaml:"consumer"`
 	DatabaseConfig              `yaml:"database"`
+}
+
+type Rclone struct {
+	GcsConfig string `yaml:"gcsConfig"`
+	DosConfig string `yaml:"dosConfig"`
+	S3Config  string `yaml:"s3Config"`
 }
 
 type Consumer struct {

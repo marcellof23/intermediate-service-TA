@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "phonic-weaver-375914",
+  "private_key_id": "933ba4e77a510295ff4fd92708d3821c134acd50",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDF4vFcii8VxYTs\nBn4I/cQU6myPdYNxIu5lYf3BHImNsrg2tloNqTge6J/QPoHgFud5SgypveiCjdZH\n92ZrZnmHnIuzP2MtKXtSDt5t87m+FHbhv+OddCgS2en3W3Wzutc+Y/ijxwyXb2Nv\nLGfJYlqcUWv/Upa/1+BvJjzUa50DUXPGoAT9P97oB82CmugKQYvmup72VnBIjfVX\n4usbTm8rqUS9HVgJVPsAT5kML95tA2SrCA/u+1eUzTzEarqVHTGqZbyx46CgWjYb\nyZjpCYbim5Pmb7x/PGm6gNT+DnNM7OYXq+m5qkC3jqcoUgVCByHINn2VGHMsicRX\niyderSVvAgMBAAECggEAFM8B+WywedYc3aLrIu/obBiglM9TJJT7Q57zy5hAIK3f\n8CTpwFEAjUOB9qh0CMfvzFHMlhbZuczHcSbjVrzeX7PG/vDV8XxQsvbMTfyYlhPZ\n0nBWs4pw4laW40NzU5R8qNtjXHmEafI1Hw4o1cTpaVGojR82qfK974IyWFX+m0gI\nYTz/WGWw3aDjz7AUxgV8Bb4BiXRCxqVigm3m32xAHpej7CE5kwx2U1sFqUKbv8r/\nZF9UccUTkfK5D2rPm92VvTb0PZJTdYH59mIxYFqUZQPsdcUwv9oSo8MhBydVXSfk\nK5uYHP8gvDOtHjOdZKz+QTd4Fo3bIZiKlBpxOqbsiQKBgQD2OElTkzmYWitM1yWc\n1nkFPnRsAhWPBEYgi+t5WLbL4kJRs/I8fvVV58gQG7D9JUw38EPIbmJKx0MFl7jb\nrBV1WHfxSPLHCd/SJViqkJhG/kpR90AU03VFOBGEbiOOpIc8T7Yw954bdI/q0pOy\n6lT/mB67SLGLv2V1O1s3EnqWKQKBgQDNvyxXk9nWeBomkPnpJf36rZ9Sym7llEoq\nbY9rxHHzTsKgzOj/HNy+KIuoWwFXNSa9T7NBDbgl7pvN7mwbeOTn/nhyvROn31hA\n2F1dBhty6PeyUOVz4t+yfgXcjzxINnUHsHRUa4XLR2Z52JE4rn6YKNv/Egb25mJI\nXM3Wz6fh1wKBgQCZpA/ljeYPspx4a3x1/MMxyYIeb8KCJtmXr5f1da1DVmGp2A7d\nPx/aRjLqEk2D+YUxFsVFSdQd829YCw/4S85sFhNqRenw17GJ0XIdpPLQwhcgRJgB\nJt5zngQYTh30Aai9ssPulGVdnoO7tUEjEOSPRZ5PoZHgsUMfPzWxDN/f2QKBgQCO\n+xPtqKnyCXTi6E1EYUqnMpFOD7ARi4QfCBRraBFobIuFA+HHqF8fJz4muVetKxrI\n5OJFiys18SQFcHNghBtPveAmnI9UUjoalkILq3rX2F6KZP2QE1Ix0LJyHHhgFrgt\np8qwACjyo6PreT0yjtEbHQoFsJl2a5RRhWzmo1if8QKBgFRzImKlxUYZxPtUFtS0\nk/luh+5qZ4TfE+TgtNx4du3oeFxdBYFX0yfwcpaWeKbgJHg0hCCATNfe44igrqGd\n4pTg5BQFahei+mVDymYSWx0FFQudRv6gw19kiwbw+SOMMrsSIwHVFKFwswLTZNsw\nG0zjHVNMtZmkl0QoFCiGCMV+\n-----END PRIVATE KEY-----\n",
+  "client_email": "vfs-service@phonic-weaver-375914.iam.gserviceaccount.com",
+  "client_id": "105054076998461671639",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vfs-service%40phonic-weaver-375914.iam.gserviceaccount.com"
+}

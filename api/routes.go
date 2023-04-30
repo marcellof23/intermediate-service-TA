@@ -5,6 +5,7 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -109,7 +110,16 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		c.Set("vdfsClient", client)
 		c.Set("db", dep.DB())
 		c.Set("jwtSecret", dep.Config().JWTSecretKey)
+		c.Set("rclone", dep.Config().Rclone)
 	})
+
+	// init logger
+	LogFile, err := os.OpenFile("server-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	if err != nil {
+		return r
+	}
+	defer LogFile.Close()
+	logger := log.New(LogFile, time.Now().Format("2006-01-02 15:04:05")+": ", 0)
 
 	// attach value to context
 	ctx := context.Background()
@@ -117,6 +127,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	ctx = context.WithValue(ctx, "vdfsClient", client)
 	ctx = context.WithValue(ctx, "jwtSecret", dep.Config().JWTSecretKey)
 	ctx = context.WithValue(ctx, "bucketName", dep.Config().BucketName)
+	ctx = context.WithValue(ctx, "server-logger", logger)
 
 	// init total size client
 	var errs error
@@ -158,7 +169,8 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 			apiV1File.DELETE("/object", integrateHdl.DeleteFile)
 		}
 
-		apiV1.GET("/backup", integrateHdl.GetFolder)
+		authRoutes.GET("/backup", integrateHdl.GetFolder)
+		authRoutes.POST("/migrate", integrateHdl.MigrateObjects)
 
 		apiV1UserNoAuth := apiV1.Group("/user")
 		{
