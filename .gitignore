@@ -6,4 +6,5 @@ kafka-log
 error-log
 data
 backup
+backup.zip
 config.yaml
