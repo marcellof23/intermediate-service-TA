@@ -42,3 +42,16 @@ func (ur *userrepository) FindByUsername(c *gin.Context, username string) (model
 	res := dao.ToUserDTO(user)
 	return res, nil
 }
+
+func (ur *userrepository) Update(c *gin.Context, user *model.User) (model.User, error) {
+	db, err := helper.GetDatabaseFromContext(c) // Get model if exist
+	if err != nil {
+		return model.User{}, err
+	}
+
+	if err := db.Updates(&user).Error; err != nil {
+		return model.User{}, err
+	}
+
+	return *user, nil
+}

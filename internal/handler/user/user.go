@@ -75,6 +75,13 @@ func (hdl *UserHandler) SignIn(c *gin.Context) {
 		c.AbortWithStatusJSON(500, err)
 		return
 	}
+	user.GroupID = user.ID
+
+	_, err = hdl.userRepo.Update(c, &user)
+	if err != nil {
+		c.AbortWithStatusJSON(500, err)
+		return
+	}
 
 	tokenString, err := generateJWT(c, res.ID, res.Username)
 	if err != nil {
@@ -126,5 +133,20 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 		"success": true,
 		"data":    user,
 		"token":   tokenString,
+	})
+}
+
+func (hdl *UserHandler) GetClients(c *gin.Context) {
+	clients, err := helper.GetClientsFromContext(c)
+	if err != nil {
+		c.AbortWithStatusJSON(500, gin.H{
+			"message": "no config clients in intermediate service",
+		})
+		return
+	}
+
+	c.JSON(200, gin.H{
+		"success": true,
+		"data":    clients,
 	})
 }

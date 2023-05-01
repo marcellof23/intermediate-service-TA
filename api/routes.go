@@ -111,6 +111,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		c.Set("db", dep.DB())
 		c.Set("jwtSecret", dep.Config().JWTSecretKey)
 		c.Set("rclone", dep.Config().Rclone)
+		c.Set("clients", dep.Config().Clients)
 	})
 
 	// init logger
@@ -176,6 +177,11 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		{
 			apiV1UserNoAuth.POST("/login", userHdl.Login)
 			apiV1UserNoAuth.POST("/sign-up", userHdl.SignIn)
+		}
+
+		apiV1UserAuth := authRoutes.Group("/user")
+		{
+			apiV1UserAuth.GET("/clients", userHdl.GetClients)
 		}
 	}
 

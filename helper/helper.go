@@ -83,6 +83,18 @@ func GetJWTSecretFromContext(c *gin.Context) (string, error) {
 	return jwtKey, nil
 }
 
+func GetClientsFromContext(c *gin.Context) ([]string, error) {
+	tmp, exists := c.Get("clients")
+	if !exists {
+		return []string{}, ErrJWTKeyNotFound
+	}
+	clients, ok := tmp.([]string)
+	if !ok {
+		return []string{}, ErrJWTKeyNotFound
+	}
+	return clients, nil
+}
+
 func GetJWTSecretFromContextQueue(c context.Context) (string, error) {
 	tmp := c.Value("jwtSecret")
 	jwtKey, ok := tmp.(string)
