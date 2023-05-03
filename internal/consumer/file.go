@@ -111,6 +111,7 @@ func (con *Consumer) AuthQueue(ctx context.Context, msg Message, log *log.Logger
 
 func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	arrRes := helper.SortSlice(storage.TotalSizeClient)
+
 	fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
 	file := model.File{
 		Filename:     fullPath,
