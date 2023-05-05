@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"log"
+	"path/filepath"
 	"sort"
 
 	"github.com/aws/aws-sdk-go/service/s3"
@@ -110,6 +111,12 @@ func GetHash(pwd []byte) string {
 		log.Println(err)
 	}
 	return string(hash)
+}
+
+func JoinPath(path ...string) string {
+	joinedPath := filepath.Join(path...)
+	unixPath := filepath.ToSlash(joinedPath)
+	return unixPath
 }
 
 func SortSlice(m map[string]int64) []string {

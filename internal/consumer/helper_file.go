@@ -4,13 +4,14 @@ import (
 	"context"
 	"io"
 	"os"
-	"path/filepath"
 
 	"github.com/intermediate-service-ta/boot"
+	"github.com/intermediate-service-ta/helper"
 )
 
 func BackupFiletoDisk(ctx context.Context, msg Message) error {
-	var osFile, err = os.Create(filepath.Join(boot.Backup, filepath.Join(msg.AbsPathDest, msg.AbsPathSource)))
+	filepath := helper.JoinPath(boot.Backup, msg.AbsPathDest, msg.AbsPathSource)
+	var osFile, err = os.Create(filepath)
 	if err != nil {
 		return err
 	}
@@ -25,7 +26,8 @@ func BackupFiletoDisk(ctx context.Context, msg Message) error {
 }
 
 func RemoveFileFromDisk(ctx context.Context, msg Message) error {
-	err := os.RemoveAll(filepath.Join(boot.Backup, msg.AbsPathSource))
+	filepath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+	err := os.RemoveAll(filepath)
 	if err != nil {
 		return err
 	}
@@ -33,7 +35,8 @@ func RemoveFileFromDisk(ctx context.Context, msg Message) error {
 }
 
 func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
-	err := os.RemoveAll(filepath.Join(boot.Backup, msg.AbsPathSource))
+	filepath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+	err := os.RemoveAll(filepath)
 	if err != nil {
 		return err
 	}
@@ -41,15 +44,17 @@ func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
 }
 
 func CopyFiletoDisk(ctx context.Context, msg Message) error {
-	os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
+	filepathSrc := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+	filepathDest := helper.JoinPath(boot.Backup, msg.AbsPathDest)
+	os.MkdirAll(filepathSrc, os.ModePerm)
 
-	originalFile, err := os.Open(filepath.Join(boot.Backup, msg.AbsPathSource))
+	originalFile, err := os.Open(filepathSrc)
 	if err != nil {
 		return err
 	}
 	defer originalFile.Close()
 
-	newFile, err := os.Create(filepath.Join(boot.Backup, msg.AbsPathDest))
+	newFile, err := os.Create(filepathDest)
 	if err != nil {
 		return err
 	}
@@ -62,24 +67,3 @@ func CopyFiletoDisk(ctx context.Context, msg Message) error {
 
 	return nil
 }
-
-//func CopyDirtoDisk(ctx context.Context, pathSource, pathDest string) error {
-//	originalDir, err := os.ReadDir(pathSource)
-//	if err != nil {
-//		return err
-//	}
-//	defer originalDir.Close()
-//
-//	newFile, err := os.Create(pathDest)
-//	if err != nil {
-//		return err
-//	}
-//	defer newFile.Close()
-//
-//	_, err = io.Copy(newFile, originalFile)
-//	if err != nil {
-//		return err
-//	}
-//
-//	return nil
-//}

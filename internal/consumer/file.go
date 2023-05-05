@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	"strings"
 	"time"
 
@@ -112,7 +111,7 @@ func (con *Consumer) AuthQueue(ctx context.Context, msg Message, log *log.Logger
 func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	arrRes := helper.SortSlice(storage.TotalSizeClient)
 
-	fullPath := filepath.Join(msg.AbsPathDest, msg.AbsPathSource)
+	fullPath := helper.JoinPath(msg.AbsPathDest, msg.AbsPathSource)
 	file := model.File{
 		Filename:     fullPath,
 		OriginalName: fullPath,
@@ -155,7 +154,8 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 }
 
 func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
-	err := os.Chmod(filepath.Join(boot.Backup, msg.AbsPathSource), os.FileMode(msg.FileMode))
+	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+	err := os.Chmod(fullPath, os.FileMode(msg.FileMode))
 	if err != nil {
 		con.errorLog.Println(err)
 		return
@@ -163,7 +163,8 @@ func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
 }
 
 func (con *Consumer) CreateFolder(c context.Context, msg Message) {
-	err := os.MkdirAll(filepath.Join(boot.Backup, msg.AbsPathSource), os.ModePerm)
+	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+	err := os.MkdirAll(fullPath, os.ModePerm)
 	if err != nil {
 		con.errorLog.Println(err)
 		return
