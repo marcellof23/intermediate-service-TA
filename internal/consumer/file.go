@@ -26,7 +26,7 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 		fmt.Println(err)
 	}
 
-	log.Println(msg.Command, msg.AbsPathSource, uname)
+	log.Println(msg.Command, msg.AbsPathSource, uname, msg.Uid, msg.Gid, msg.FileMode)
 
 	comms := strings.Split(msg.Command, " ")
 	switch comms[0] {
@@ -164,7 +164,9 @@ func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
 
 func (con *Consumer) CreateFolder(c context.Context, msg Message) {
 	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
-	err := os.MkdirAll(fullPath, os.ModePerm)
+	err := os.MkdirAll(fullPath, os.FileMode(msg.FileMode))
+	os.Chown(fullPath, msg.Uid, msg.Gid)
+
 	if err != nil {
 		con.errorLog.Println(err)
 		return

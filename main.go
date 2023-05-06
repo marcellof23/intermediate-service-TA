@@ -25,8 +25,6 @@ func main() {
 			time.Sleep(3000 * time.Millisecond)
 		}
 	}
-
-	fmt.Println("AAAA")
 }
 
 //func handler(signal os.Signal) {

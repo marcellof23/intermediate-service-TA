@@ -176,7 +176,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		apiV1UserNoAuth := apiV1.Group("/user")
 		{
 			apiV1UserNoAuth.POST("/login", userHdl.Login)
-			apiV1UserNoAuth.POST("/sign-up", userHdl.SignIn)
+			apiV1UserNoAuth.POST("/sign-up", userHdl.SignUp)
 		}
 
 		apiV1UserAuth := authRoutes.Group("/user")

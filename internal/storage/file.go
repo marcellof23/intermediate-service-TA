@@ -2,7 +2,6 @@ package storage
 
 import (
 	"context"
-	"fmt"
 	"sync"
 
 	"github.com/intermediate-service-ta/boot"
@@ -93,8 +92,6 @@ func (fr *filerepository) GetTotalSizeClient(c context.Context) (map[string]int6
 			m[val] = 0
 		}
 	}
-
-	fmt.Printf("%v AAA\n", m)
 
 	return m, nil
 }

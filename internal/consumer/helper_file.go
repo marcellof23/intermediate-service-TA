@@ -12,6 +12,8 @@ import (
 func BackupFiletoDisk(ctx context.Context, msg Message) error {
 	filepath := helper.JoinPath(boot.Backup, msg.AbsPathDest, msg.AbsPathSource)
 	var osFile, err = os.Create(filepath)
+	os.Chmod(filepath, os.FileMode(msg.FileMode))
+	os.Chown(filepath, msg.Uid, msg.Gid)
 	if err != nil {
 		return err
 	}
@@ -46,7 +48,7 @@ func RemoveFolderFromDisk(ctx context.Context, msg Message) error {
 func CopyFiletoDisk(ctx context.Context, msg Message) error {
 	filepathSrc := helper.JoinPath(boot.Backup, msg.AbsPathSource)
 	filepathDest := helper.JoinPath(boot.Backup, msg.AbsPathDest)
-	os.MkdirAll(filepathSrc, os.ModePerm)
+	//os.MkdirAll(filepathSrc, os.FileMode(msg.FileMode))
 
 	originalFile, err := os.Open(filepathSrc)
 	if err != nil {
@@ -55,6 +57,8 @@ func CopyFiletoDisk(ctx context.Context, msg Message) error {
 	defer originalFile.Close()
 
 	newFile, err := os.Create(filepathDest)
+	os.Chmod(filepathDest, os.FileMode(msg.FileMode))
+	os.Chown(filepathDest, msg.Uid, msg.Gid)
 	if err != nil {
 		return err
 	}

@@ -45,7 +45,7 @@ func generateJWT(c *gin.Context, userID int64, username string) (string, error) 
 	return tokenString, nil
 }
 
-func (hdl *UserHandler) SignIn(c *gin.Context) {
+func (hdl *UserHandler) SignUp(c *gin.Context) {
 	var creds model.Credentials
 	// Get the JSON body and decode into credentials
 	err := c.ShouldBindJSON(&creds)
@@ -82,6 +82,19 @@ func (hdl *UserHandler) SignIn(c *gin.Context) {
 		c.AbortWithStatusJSON(500, err)
 		return
 	}
+
+	//newUser := &usr.User{
+	//	Username: "newuser",
+	//	Uid:      "1001",
+	//	Gid:      "1001",
+	//	HomeDir:  "/home/newuser",
+	//}
+	//
+	//err := usr.Create(newUser)
+	//if err != nil {
+	//	fmt.Printf("Error creating user: %s\n", err)
+	//	return
+	//}
 
 	tokenString, err := generateJWT(c, res.ID, res.Username)
 	if err != nil {
