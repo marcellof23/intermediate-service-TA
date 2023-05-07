@@ -2,6 +2,7 @@ package user
 
 import (
 	"fmt"
+	"os/exec"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -83,18 +84,13 @@ func (hdl *UserHandler) SignUp(c *gin.Context) {
 		return
 	}
 
-	//newUser := &usr.User{
-	//	Username: "newuser",
-	//	Uid:      "1001",
-	//	Gid:      "1001",
-	//	HomeDir:  "/home/newuser",
-	//}
-	//
-	//err := usr.Create(newUser)
-	//if err != nil {
-	//	fmt.Printf("Error creating user: %s\n", err)
-	//	return
-	//}
+	args := fmt.Sprintf("echo codegeass7359 | sudo -S useradd -p %s %s -u %d", creds.Password, user.Username, user.ID)
+	cmd := exec.Command("/bin/sh", "-c", args)
+	_, err = cmd.CombinedOutput()
+	if err != nil {
+		c.AbortWithStatusJSON(500, err)
+		return
+	}
 
 	tokenString, err := generateJWT(c, res.ID, res.Username)
 	if err != nil {

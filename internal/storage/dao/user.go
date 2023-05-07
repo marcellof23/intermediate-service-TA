@@ -7,7 +7,7 @@ import (
 // User represents a Unix user
 type User struct {
 	Base
-	ID       int64      // User ID
+	ID       int64      `gorm:"autoIncrement:1100;"` // User ID
 	Username string     `gorm:"varchar(255);not null"`
 	Password string     `gorm:"varchar(255);not null"`
 	Role     model.Role `gorm:"varchar(255);not null"`

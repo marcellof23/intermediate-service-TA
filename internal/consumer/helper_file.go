@@ -2,6 +2,7 @@ package consumer
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"os"
 
@@ -12,8 +13,16 @@ import (
 func BackupFiletoDisk(ctx context.Context, msg Message) error {
 	filepath := helper.JoinPath(boot.Backup, msg.AbsPathDest, msg.AbsPathSource)
 	var osFile, err = os.Create(filepath)
-	os.Chmod(filepath, os.FileMode(msg.FileMode))
-	os.Chown(filepath, msg.Uid, msg.Gid)
+	err = os.Chmod(filepath, os.FileMode(msg.FileMode))
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	err = os.Chown(filepath, msg.Uid, msg.Gid)
+	if err != nil {
+		fmt.Println(err)
+	}
+
 	if err != nil {
 		return err
 	}

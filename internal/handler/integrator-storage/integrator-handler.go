@@ -1,6 +1,7 @@
 package integrator_storage
 
 import (
+	"archive/tar"
 	"archive/zip"
 	"bytes"
 	"context"
@@ -11,6 +12,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -179,7 +181,81 @@ func (hdl *IntegratorHandler) DeleteFile(c *gin.Context) {
 	}
 }
 
-func (hdl *IntegratorHandler) TestFile(c *gin.Context) {
+func Tar(source, target string) error {
+	filename := filepath.Base(source)
+	target = filepath.Join(target, fmt.Sprintf("%s.tar", filename))
+	tarfile, err := os.Create(target)
+	if err != nil {
+		return err
+	}
+	defer tarfile.Close()
+
+	tarball := tar.NewWriter(tarfile)
+	defer tarball.Close()
+
+	info, err := os.Stat(source)
+	if err != nil {
+		return nil
+	}
+
+	var baseDir string
+	if info.IsDir() {
+		baseDir = filepath.Base(source)
+	}
+
+	return filepath.Walk(source,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			header, err := tar.FileInfoHeader(info, info.Name())
+			if err != nil {
+				return err
+			}
+
+			if baseDir != "" {
+				header.Name = filepath.Join(baseDir, strings.TrimPrefix(path, source))
+			}
+
+			if err := tarball.WriteHeader(header); err != nil {
+				return err
+			}
+
+			if info.IsDir() {
+				return nil
+			}
+
+			file, err := os.Open(path)
+			if err != nil {
+				return err
+			}
+			defer file.Close()
+			_, err = io.Copy(tarball, file)
+			return err
+		})
+}
+
+func (hdl *IntegratorHandler) GetFolder(c *gin.Context) {
+	if err := Tar("backup", "."); err != nil {
+		log.Fatal(err)
+		c.AbortWithError(http.StatusInternalServerError, err)
+	}
+	c.Header("Content-Type", "application/x-tar")
+	c.Header("Content-Disposition", "attachment; filename=backup.tar")
+	tarFile, err := os.Open("backup.tar")
+	defer tarFile.Close()
+	defer os.RemoveAll("backup.tar")
+
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+
+	_, err = io.Copy(c.Writer, tarFile)
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
 }
 
 func zipSource(source, target string) error {
@@ -238,7 +314,7 @@ func zipSource(source, target string) error {
 	})
 }
 
-func (hdl *IntegratorHandler) GetFolder(c *gin.Context) {
+func (hdl *IntegratorHandler) GetFolder2(c *gin.Context) {
 	if err := zipSource("backup", "backup.zip"); err != nil {
 		log.Fatal(err)
 	}
