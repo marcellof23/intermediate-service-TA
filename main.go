@@ -96,7 +96,7 @@ func Untar(tarball, target string) error {
 
 		path := filepath.Join(target, header.Name)
 		info := header.FileInfo()
-		fmt.Println(header.Uid, header.Gid)
+
 		if info.IsDir() {
 			if err = os.MkdirAll(path, info.Mode()); err != nil {
 				return err

@@ -95,7 +95,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	fileRepo := repository.NewFileRepo()
 
 	// init Handler
-	integrateHdl := integratehandler.NewIntegratorHandler()
+	integrateHdl := integratehandler.NewIntegratorHandler(fileRepo)
 	userHdl := userhandler.NewUserHandler(userRepo)
 
 	// init blank engine

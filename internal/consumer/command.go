@@ -21,6 +21,7 @@ type Message struct {
 	AbsPathSource string
 	AbsPathDest   string
 	FileMode      uint64
+	Offset        int
 	Uid           int
 	Gid           int
 	Buffer        []byte

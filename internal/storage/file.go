@@ -102,3 +102,17 @@ func UpdateTotalSizeClient(client string, size int64) {
 	TotalSizeClient[client] += size
 	mtx.Unlock()
 }
+
+func (fr *filerepository) MigrateProvider(ctx context.Context, providerSource, providerDest string) error {
+	db, err := helper.GetDatabaseFromContext(ctx) // Get model if exist
+	if err != nil {
+		return err
+	}
+
+	err = db.Exec("UPDATE files SET client = ? WHERE client = ?", providerDest, providerSource).Error
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

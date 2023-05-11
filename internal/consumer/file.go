@@ -155,6 +155,7 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 
 func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
 	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+
 	err := os.Chmod(fullPath, os.FileMode(msg.FileMode))
 	if err != nil {
 		con.errorLog.Println(err)
@@ -242,7 +243,6 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		Key:        aws.String(fl.Filename),
 		CopySource: aws.String(fmt.Sprintf("%v/%v", bucketName, msg.AbsPathSource)),
 	})
-	fmt.Println(bucketName, fl.Filename, msg.AbsPathSource)
 	if err != nil {
 		con.errorLog.Println(err)
 		return

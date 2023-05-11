@@ -11,4 +11,5 @@ type FileRepository interface {
 	GetTotalSizeClient(c context.Context) (map[string]int64, error)
 	Delete(c context.Context, filename string) (model.File, error)
 	Get(c context.Context, filename string) (model.File, error)
+	MigrateProvider(ctx context.Context, providerSource, providerDest string) error
 }

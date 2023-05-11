@@ -21,13 +21,15 @@ import (
 
 	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/helper"
+	"github.com/intermediate-service-ta/internal/repository"
 )
 
 type IntegratorHandler struct {
+	fileRepo repository.FileRepository
 }
 
-func NewIntegratorHandler() *IntegratorHandler {
-	return &IntegratorHandler{}
+func NewIntegratorHandler(filerepo repository.FileRepository) *IntegratorHandler {
+	return &IntegratorHandler{fileRepo: filerepo}
 }
 
 func (hdl *IntegratorHandler) ListBuckets(c *gin.Context) {
@@ -55,55 +57,51 @@ func (hdl *IntegratorHandler) ListBuckets(c *gin.Context) {
 }
 
 func (hdl *IntegratorHandler) GetFile(c *gin.Context) {
-	clientType := c.PostForm("client")
+
+	filename := c.Query("filename")
+
+	file, err := hdl.fileRepo.Get(c, filename)
+	if err != nil {
+		fmt.Println("Failed to get client")
+		return
+	}
+	fmt.Println(file, "AHA")
+
 	cli, ok := c.MustGet("vdfsClient").(boot.Client)
 	if !ok {
 		fmt.Println("Failed to get client")
 		return
 	}
 
-	client := helper.ClientInitiation(clientType, cli)
-	filename := "ehe"
+	client := helper.ClientInitiation(file.Client, cli)
 
 	result, err := client.GetObject(&s3.GetObjectInput{
-		Bucket: aws.String("testing-vfs"),
+		Bucket: aws.String("testing-vdfs"),
 		Key:    aws.String(filename),
 	})
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":    "Failed to get file",
-			"uploader": err.Error(),
+			"message": "Failed to get file",
+			"error":   err.Error(),
 		})
 		return
 	}
-
-	defer result.Body.Close()
-	file, err := os.Create(filename)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":    "Failed to get file",
-			"uploader": err.Error(),
-		})
-		return
-	}
-	defer file.Close()
 
 	body, err := io.ReadAll(result.Body)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":    "Failed to get file",
-			"uploader": err.Error(),
+			"message": "Failed to parse body",
+			"error":   err.Error(),
 		})
 		return
 	}
-	_, err = file.Write(body)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{
-			"error":    "Failed to get file",
-			"uploader": err.Error(),
-		})
-		return
-	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"message": "successful get data",
+		"data":    body,
+	})
+	return
+
 }
 
 func (hdl *IntegratorHandler) UploadFile(c *gin.Context) {
@@ -377,6 +375,12 @@ func (hdl *IntegratorHandler) MigrateObjects(c *gin.Context) {
 
 	// Run the rclone command and print any errors
 	_, err := cmd.CombinedOutput()
+	if err != nil {
+		c.AbortWithError(http.StatusInternalServerError, err)
+		return
+	}
+
+	err = hdl.fileRepo.MigrateProvider(c, clientSource, clientDest)
 	if err != nil {
 		c.AbortWithError(http.StatusInternalServerError, err)
 		return

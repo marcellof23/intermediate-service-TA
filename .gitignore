@@ -9,3 +9,5 @@ backup
 backup.zip
 config.yaml
 sa.json
+main.go
+main2.go
