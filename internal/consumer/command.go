@@ -3,6 +3,7 @@ package consumer
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -89,6 +90,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 				kafkaLog.Println("failed to unmarshal:", err)
 			}
 
+			fmt.Printf("halo %v", msg)
 			con.AuthQueue(c, msg, commandLog)
 			time.Sleep(300 * time.Millisecond)
 		}

@@ -9,6 +9,7 @@ import (
 
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 
@@ -111,6 +112,14 @@ func GetHash(pwd []byte) string {
 		log.Println(err)
 	}
 	return string(hash)
+}
+
+func GetLogger(ctx context.Context) *zap.Logger {
+	if ctx.Value("pubsub-logger") != nil {
+		return ctx.Value("pubsub-logger").(*zap.Logger)
+	}
+
+	return zap.NewNop()
 }
 
 func JoinPath(path ...string) string {
