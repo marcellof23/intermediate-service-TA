@@ -26,7 +26,7 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 		fmt.Println(err)
 	}
 
-	log.Println(msg.Command, msg.AbsPathSource, uname, msg.Uid, msg.Gid, msg.FileMode)
+	log.Println(msg.Command, msg.AbsPathSource, uname, msg.Uid, msg.Gid, msg.FileMode, len(msg.Buffer), msg.Order)
 
 	comms := strings.Split(msg.Command, " ")
 	switch comms[0] {
@@ -44,6 +44,8 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 		}
 	case "mkdir":
 		con.CreateFolder(c, msg)
+	case "write":
+		con.WriteFile(c, msg)
 	default:
 		return errors.New("command not found")
 	}
@@ -150,6 +152,60 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	}
 
 	r := con.Retry(BackupFiletoDisk, 3e9)
+	go r(c, msg)
+}
+
+func (con *Consumer) WriteFile(c context.Context, msg Message) {
+	arrRes := helper.SortSlice(storage.TotalSizeClient)
+
+	fullPath := helper.JoinPath(msg.AbsPathDest, msg.AbsPathSource)
+
+	fl, err := con.fileRepo.Get(c, fullPath)
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+
+	chunkFile := model.ChunkFile{
+		Filename: fl.Filename,
+		FileID:   fl.ID,
+		Order:    msg.Order,
+		Client:   arrRes[0],
+		Size:     int64(len(msg.Buffer)),
+	}
+
+	_, err = con.chunkFileRepo.Create(c, &chunkFile)
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+
+	storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
+
+	cli, err := helper.GetVDFSClientFromContext(c)
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+	client := helper.ClientInitiation(arrRes[0], cli)
+
+	bucketName, err := helper.GetBucketNameFromContext(c)
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+
+	_, err = client.PutObject(&s3.PutObjectInput{
+		Bucket: aws.String(bucketName),
+		Key:    aws.String(fmt.Sprintf("%s-partition-%d", fl.Filename, msg.Order)),
+		Body:   bytes.NewReader(msg.Buffer),
+	})
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+
+	r := con.Retry(WriteFileOnDisk, 3e9)
 	go r(c, msg)
 }
 

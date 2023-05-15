@@ -3,7 +3,6 @@ package consumer
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -22,25 +21,26 @@ type Message struct {
 	AbsPathSource string
 	AbsPathDest   string
 	FileMode      uint64
-	Offset        int
+	Order         int
 	Uid           int
 	Gid           int
 	Buffer        []byte
 }
 
 type Consumer struct {
-	fileRepo repository.FileRepository
-	errorLog *log.Logger
+	fileRepo      repository.FileRepository
+	chunkFileRepo repository.ChunkFileRepository
+	errorLog      *log.Logger
 }
 
-func NewConsumer(fileRepo repository.FileRepository) *Consumer {
+func NewConsumer(fileRepo repository.FileRepository, chunkFileRepo repository.ChunkFileRepository) *Consumer {
 	var errFile error
 	errLogFile, errFile = os.OpenFile("error-log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	if errFile != nil {
 		log.Fatalf("error opening file: %v", errFile)
 	}
 
-	return &Consumer{fileRepo: fileRepo}
+	return &Consumer{fileRepo: fileRepo, chunkFileRepo: chunkFileRepo}
 }
 
 func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, sigchan chan os.Signal) {
@@ -90,7 +90,6 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 				kafkaLog.Println("failed to unmarshal:", err)
 			}
 
-			fmt.Printf("halo %v", msg)
 			con.AuthQueue(c, msg, commandLog)
 			time.Sleep(300 * time.Millisecond)
 		}

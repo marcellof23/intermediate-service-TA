@@ -35,6 +35,19 @@ func BackupFiletoDisk(ctx context.Context, msg Message) error {
 	return nil
 }
 
+func WriteFileOnDisk(ctx context.Context, msg Message) error {
+	filepath := helper.JoinPath(boot.Backup, msg.AbsPathDest, msg.AbsPathSource)
+
+	var osFile, err = os.OpenFile(filepath, os.O_WRONLY, os.ModeAppend)
+
+	_, err = osFile.WriteAt(msg.Buffer, int64(msg.Order*len(msg.Buffer)))
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func RemoveFileFromDisk(ctx context.Context, msg Message) error {
 	filepath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
 	err := os.RemoveAll(filepath)

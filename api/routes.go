@@ -93,6 +93,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	// init repos
 	userRepo := repository.NewUserRepo()
 	fileRepo := repository.NewFileRepo()
+	chunkFileRepo := repository.NewChunkFileRepo()
 
 	// init Handler
 	integrateHdl := integratehandler.NewIntegratorHandler(fileRepo)
@@ -138,7 +139,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	}
 
 	// init consumer
-	consumer := consumer.NewConsumer(fileRepo)
+	consumer := consumer.NewConsumer(fileRepo, chunkFileRepo)
 	go consumer.ConsumeCommand(ctx, dep, sigchan)
 
 	// setup cors config

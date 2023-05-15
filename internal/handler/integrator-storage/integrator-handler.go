@@ -65,7 +65,6 @@ func (hdl *IntegratorHandler) GetFile(c *gin.Context) {
 		fmt.Println("Failed to get client")
 		return
 	}
-	fmt.Println(file, "AHA")
 
 	cli, ok := c.MustGet("vdfsClient").(boot.Client)
 	if !ok {
