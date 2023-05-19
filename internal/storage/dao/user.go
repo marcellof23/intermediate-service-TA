@@ -11,6 +11,7 @@ type User struct {
 	Username string     `gorm:"varchar(255);not null"`
 	Password string     `gorm:"varchar(255);not null"`
 	Role     model.Role `gorm:"varchar(255);not null"`
+	ClientID string     `gorm:"varchar(255);not null"`
 	GroupID  int64      // Group ID
 }
 
@@ -21,6 +22,7 @@ func ToUserDTO(u User) model.User {
 		Password: u.Password,
 		Role:     u.Role,
 		GroupID:  u.GroupID,
+		ClientID: u.ClientID,
 		Base: model.Base{
 			CreatedAt: u.CreatedAt,
 			UpdatedAt: u.UpdatedAt,
@@ -35,6 +37,7 @@ func ToUserDAO(u model.User) User {
 		Password: u.Password,
 		Role:     u.Role,
 		GroupID:  u.GroupID,
+		ClientID: u.ClientID,
 		Base: Base{
 			CreatedAt: u.CreatedAt,
 			UpdatedAt: u.UpdatedAt,

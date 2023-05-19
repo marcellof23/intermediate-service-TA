@@ -13,8 +13,9 @@ type User struct {
 	ID       int64  // User ID
 	Username string // Username of the user
 	Password string `json:"-"` // Password of the user
-	Role     Role   // Role of the user
-	GroupID  int64  // Group ID
+	ClientID string
+	Role     Role  // Role of the user
+	GroupID  int64 // Group ID
 }
 
 // Create a struct that models the structure of a user, both in the request body, and in the DB

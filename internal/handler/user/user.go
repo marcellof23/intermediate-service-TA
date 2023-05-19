@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
+	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/intermediate-service-ta/helper"
@@ -137,6 +138,7 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 		c.AbortWithStatusJSON(500, err)
 		return
 	}
+	user.ClientID = uuid.New().String()
 
 	c.JSON(200, gin.H{
 		"success": true,
