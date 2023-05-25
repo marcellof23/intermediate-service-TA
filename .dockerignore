@@ -1,0 +1,11 @@
+tmp/
+vendor/
+.idea
+command-log
+kafka-log
+error-log
+data/
+backup/
+sa.json
+main.go
+main2.go

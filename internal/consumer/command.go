@@ -56,7 +56,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 	}
 	defer commandLogFile.Close()
 
-	kafkaLog := log.New(kafkaLogFile, "kafka reader: ", 0)
+	kafkaLog := log.New(kafkaLogFile, "COMMAND:", 0)
 	commandLog := log.New(commandLogFile, "kafka reader: ", 0)
 	con.errorLog = log.New(errLogFile, "error: ", 0)
 

@@ -60,13 +60,15 @@ func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 		for r := 0; ; r++ {
 			err := effector(ctx, msg)
 			if err == nil || r >= 20 {
+				if r >= 20 {
+					con.errorLog.Printf("Retrying function already done 20 times, error still persist err: %s", err.Error())
+				}
 				return nil
 			}
 
-			con.errorLog.Printf("Function call failed, retrying in %v err: %s", delay, err.Error())
-
 			select {
 			case <-time.After(delay):
+				delay = delay * time.Duration(1.5*float64(time.Second))
 			case <-ctx.Done():
 				return ctx.Err()
 			}
@@ -151,7 +153,7 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 		return
 	}
 
-	r := con.Retry(BackupFiletoDisk, 3e9)
+	r := con.Retry(BackupFiletoDisk, 1e9)
 	go r(c, msg)
 }
 
@@ -205,7 +207,7 @@ func (con *Consumer) WriteFile(c context.Context, msg Message) {
 		return
 	}
 
-	r := con.Retry(WriteFileOnDisk, 3e9)
+	r := con.Retry(WriteFileOnDisk, 1e9)
 	go r(c, msg)
 }
 
@@ -256,7 +258,7 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 		Key:    aws.String(file.Filename),
 	})
 
-	r := con.Retry(RemoveFileFromDisk, 3e9)
+	r := con.Retry(RemoveFileFromDisk, 1e9)
 	go r(c, msg)
 }
 
@@ -304,12 +306,12 @@ func (con *Consumer) CopyFile(c context.Context, msg Message) {
 		return
 	}
 
-	r := con.Retry(CopyFiletoDisk, 3e9)
+	r := con.Retry(CopyFiletoDisk, 1e9)
 	go r(c, msg)
 
 }
 
 func (con *Consumer) RemoveDir(c context.Context, msg Message) {
-	r := con.Retry(RemoveFolderFromDisk, 3e9)
+	r := con.Retry(RemoveFolderFromDisk, 1e9)
 	go r(c, msg)
 }

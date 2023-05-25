@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  intermediate-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name:  intermediate-service
+  template:
+    metadata:
+      labels:
+        name: intermediate-service
+    spec:
+      containers:
+        - name: application
+          image: 010573/intermediate-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: regcred
