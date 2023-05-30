@@ -36,6 +36,11 @@ type Config struct {
 	Rclone                      `yaml:"rclone"`
 	Consumer                    `yaml:"consumer"`
 	DatabaseConfig              `yaml:"database"`
+	Pubsub                      struct {
+		Topic          string `yaml:"topic"`
+		Project        string `yaml:"projectID"`
+		CredentialFile string `yaml:"credentialsFile"`
+	} `yaml:"pubsub"`
 }
 
 type Rclone struct {

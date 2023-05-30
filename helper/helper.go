@@ -97,6 +97,15 @@ func GetClientsFromContext(c *gin.Context) ([]string, error) {
 	return clients, nil
 }
 
+func GetConfigFromContext(c context.Context) (boot.Config, error) {
+	tmp := c.Value("config")
+	conf, ok := tmp.(boot.Config)
+	if !ok {
+		return boot.Config{}, ErrJWTKeyNotFound
+	}
+	return conf, nil
+}
+
 func GetJWTSecretFromContextQueue(c context.Context) (string, error) {
 	tmp := c.Value("jwtSecret")
 	jwtKey, ok := tmp.(string)

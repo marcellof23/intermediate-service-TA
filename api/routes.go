@@ -20,6 +20,7 @@ import (
 
 	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/internal/consumer"
+	cronhandler "github.com/intermediate-service-ta/internal/cron"
 	integratehandler "github.com/intermediate-service-ta/internal/handler/integrator-storage"
 	userhandler "github.com/intermediate-service-ta/internal/handler/user"
 	repository "github.com/intermediate-service-ta/internal/storage"
@@ -94,10 +95,12 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	userRepo := repository.NewUserRepo()
 	fileRepo := repository.NewFileRepo()
 	chunkFileRepo := repository.NewChunkFileRepo()
+	subcsriberRepo := repository.NewSubscriberRepo()
 
 	// init Handler
 	integrateHdl := integratehandler.NewIntegratorHandler(fileRepo)
-	userHdl := userhandler.NewUserHandler(userRepo)
+	userHdl := userhandler.NewUserHandler(userRepo, subcsriberRepo)
+	cron := cronhandler.NewCronHandler(subcsriberRepo)
 
 	// init blank engine
 	r := gin.New()
@@ -113,6 +116,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		c.Set("jwtSecret", dep.Config().JWTSecretKey)
 		c.Set("rclone", dep.Config().Rclone)
 		c.Set("clients", dep.Config().Clients)
+		c.Set("config", dep.Config())
 	})
 
 	// init logger
@@ -130,6 +134,12 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	ctx = context.WithValue(ctx, "jwtSecret", dep.Config().JWTSecretKey)
 	ctx = context.WithValue(ctx, "bucketName", dep.Config().BucketName)
 	ctx = context.WithValue(ctx, "server-logger", logger)
+	ctx = context.WithValue(ctx, "config", dep.Config())
+
+	err = cron.ManageSubscriber(ctx)
+	if err != nil {
+		panic(err)
+	}
 
 	// init total size client
 	var errs error

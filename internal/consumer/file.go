@@ -23,7 +23,7 @@ import (
 func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error {
 	uname, err := helper.GetUsernameFromContext(c)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 	}
 
 	log.Println(msg.Command, msg.AbsPathSource, uname, msg.Uid, msg.Gid, msg.FileMode, len(msg.Buffer), msg.Order)
@@ -59,16 +59,19 @@ func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 	return func(ctx context.Context, msg Message) error {
 		for r := 0; ; r++ {
 			err := effector(ctx, msg)
-			if err == nil || r >= 20 {
-				if r >= 20 {
-					con.errorLog.Printf("Retrying function already done 20 times, error still persist err: %s", err.Error())
+			if err == nil || r >= 40 {
+				if r >= 40 {
+					con.errorLog.Printf("Retrying function already done 40 times, error still persist err: %s", err.Error())
 				}
 				return nil
 			}
 
 			select {
 			case <-time.After(delay):
-				delay = delay * time.Duration(1.5*float64(time.Second))
+				if r >= 20 {
+					delay = delay * time.Duration(1.2*float64(time.Second))
+					fmt.Println(delay)
+				}
 			case <-ctx.Done():
 				return ctx.Err()
 			}

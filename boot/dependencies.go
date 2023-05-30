@@ -13,7 +13,11 @@ type Dependencies struct {
 
 func InitDependencies(cfg Config) (*Dependencies, error) {
 	db, err := InitDB(cfg.DatabaseConfig)
-	db.AutoMigrate(&dao.File{}, &dao.User{}, &dao.Group{}, &dao.ChunkFile{})
+	if err != nil {
+		return nil, err
+	}
+
+	err = db.AutoMigrate(&dao.File{}, &dao.User{}, &dao.Group{}, &dao.ChunkFile{}, &dao.Subscriber{})
 	if err != nil {
 		return nil, err
 	}

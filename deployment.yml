@@ -16,8 +16,15 @@ spec:
       containers:
         - name: application
           image: 010573/intermediate-service:latest
-          imagePullPolicy: Never
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: host-volume
+              mountPath: /backup
+      volumes:
+        - name: host-volume
+          hostPath:
+            path: /backup
       imagePullSecrets:
         - name: regcred

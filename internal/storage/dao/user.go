@@ -7,22 +7,22 @@ import (
 // User represents a Unix user
 type User struct {
 	Base
-	ID       int64      `gorm:"autoIncrement:1100;"` // User ID
-	Username string     `gorm:"varchar(255);not null"`
-	Password string     `gorm:"varchar(255);not null"`
-	Role     model.Role `gorm:"varchar(255);not null"`
-	ClientID string     `gorm:"varchar(255);not null"`
-	GroupID  int64      // Group ID
+	ID           int64      `gorm:"autoIncrement:1100;"` // User ID
+	Username     string     `gorm:"varchar(255);not null"`
+	Password     string     `gorm:"varchar(255);not null"`
+	Role         model.Role `gorm:"varchar(255);not null"`
+	SubscriberID string     `gorm:"varchar(255);not null"`
+	GroupID      int64      // Group ID
 }
 
 func ToUserDTO(u User) model.User {
 	return model.User{
-		ID:       u.ID,
-		Username: u.Username,
-		Password: u.Password,
-		Role:     u.Role,
-		GroupID:  u.GroupID,
-		ClientID: u.ClientID,
+		ID:           u.ID,
+		Username:     u.Username,
+		Password:     u.Password,
+		Role:         u.Role,
+		GroupID:      u.GroupID,
+		SubscriberID: u.SubscriberID,
 		Base: model.Base{
 			CreatedAt: u.CreatedAt,
 			UpdatedAt: u.UpdatedAt,
@@ -32,12 +32,12 @@ func ToUserDTO(u User) model.User {
 
 func ToUserDAO(u model.User) User {
 	return User{
-		ID:       u.ID,
-		Username: u.Username,
-		Password: u.Password,
-		Role:     u.Role,
-		GroupID:  u.GroupID,
-		ClientID: u.ClientID,
+		ID:           u.ID,
+		Username:     u.Username,
+		Password:     u.Password,
+		Role:         u.Role,
+		GroupID:      u.GroupID,
+		SubscriberID: u.SubscriberID,
 		Base: Base{
 			CreatedAt: u.CreatedAt,
 			UpdatedAt: u.UpdatedAt,

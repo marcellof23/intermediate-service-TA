@@ -7,7 +7,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 
 	"github.com/intermediate-service-ta/helper"
@@ -17,13 +16,12 @@ import (
 
 type UserHandler struct {
 	userRepo repository.UserRepository
+	subRepo  repository.SubscriberRepository
 }
 
-func NewUserHandler(userRepo repository.UserRepository) *UserHandler {
-	return &UserHandler{userRepo: userRepo}
+func NewUserHandler(userRepo repository.UserRepository, subRepo repository.SubscriberRepository) *UserHandler {
+	return &UserHandler{userRepo: userRepo, subRepo: subRepo}
 }
-
-type M map[string]interface{}
 
 func generateJWT(c *gin.Context, userID int64, username string) (string, error) {
 	secretKey, err := helper.GetJWTSecretFromContext(c) // Get secret key if exist
@@ -74,28 +72,59 @@ func (hdl *UserHandler) SignUp(c *gin.Context) {
 
 	res, err := hdl.userRepo.Create(c, &user)
 	if err != nil {
-		c.AbortWithStatusJSON(500, err)
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
 	user.GroupID = user.ID
 
-	_, err = hdl.userRepo.Update(c, &user)
+	subsId, err := hdl.subRepo.GetSubscription(c)
 	if err != nil {
-		c.AbortWithStatusJSON(500, err)
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
+		return
+	}
+	user.SubscriberID = subsId
+
+	err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
+	if err != nil {
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
 
-	args := fmt.Sprintf("echo codegeass7359 | sudo -S useradd -p %s %s -u %d", creds.Password, user.Username, user.ID)
+	_, err = hdl.userRepo.Update(c, &user)
+	if err != nil {
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
+		return
+	}
+
+	args := fmt.Sprintf("echo l | sudo -S useradd -p %s %s -u %d", creds.Password, user.Username, user.ID)
 	cmd := exec.Command("/bin/sh", "-c", args)
 	_, err = cmd.CombinedOutput()
 	if err != nil {
-		c.AbortWithStatusJSON(500, err)
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
 
 	tokenString, err := generateJWT(c, res.ID, res.Username)
 	if err != nil {
-		c.AbortWithStatusJSON(500, err)
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
 
@@ -111,7 +140,10 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 	// Get the JSON body and decode into credentials
 	err := c.ShouldBindJSON(&creds)
 	if err != nil {
-		c.AbortWithStatusJSON(400, err)
+		c.AbortWithStatusJSON(400, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
 
@@ -135,10 +167,33 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 	}
 	tokenString, err := generateJWT(c, user.ID, user.Username)
 	if err != nil {
-		c.AbortWithStatusJSON(500, err)
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
 		return
 	}
-	user.ClientID = uuid.New().String()
+
+	subsId, err := hdl.subRepo.GetSubscription(c)
+	if err != nil {
+		fmt.Println(err, "AAA")
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
+		return
+	}
+	user.SubscriberID = subsId
+
+	err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
+	if err != nil {
+		fmt.Println(err, "AAB")
+		c.AbortWithStatusJSON(500, gin.H{
+			"success": false,
+			"error":   err,
+		})
+		return
+	}
 
 	c.JSON(200, gin.H{
 		"success": true,
