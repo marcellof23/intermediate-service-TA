@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+	"sync"
 	"time"
 
 	"github.com/segmentio/kafka-go"
@@ -22,8 +23,10 @@ type Message struct {
 	AbsPathDest   string
 	FileMode      uint64
 	Order         int
+	Size          int64
 	Uid           int
 	Gid           int
+	RequestID     string
 	Buffer        []byte
 }
 
@@ -31,6 +34,7 @@ type Consumer struct {
 	fileRepo      repository.FileRepository
 	chunkFileRepo repository.ChunkFileRepository
 	errorLog      *log.Logger
+	Mu            sync.Mutex
 }
 
 func NewConsumer(fileRepo repository.FileRepository, chunkFileRepo repository.ChunkFileRepository) *Consumer {
@@ -57,7 +61,7 @@ func (con *Consumer) ConsumeCommand(c context.Context, dep *boot.Dependencies, s
 	defer commandLogFile.Close()
 
 	kafkaLog := log.New(kafkaLogFile, "COMMAND:", 0)
-	commandLog := log.New(commandLogFile, "kafka reader: ", 0)
+	commandLog := log.New(commandLogFile, time.Now().Format("2006-01-02 15:04:05")+": ", 0)
 	con.errorLog = log.New(errLogFile, "error: ", 0)
 
 	consumerConf := dep.Config().Consumer

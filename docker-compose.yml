@@ -1,30 +1,30 @@
 version: '3.9'
 
 services:
-#  db:
-#    image: mysql:5.7
-#    container_name: db-service
-#    environment:
-#      MYSQL_DATABASE: 'vfsdb'
-#      MYSQL_USER: 'user'
-#      MYSQL_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
-#      MYSQL_ROOT_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
-#    ports:
-#      - '3306:3306'
-#    expose:
-#      - '3306'
-#    networks:
-#      - dbconnect
-#    volumes:
-#      - ./data/prod/mysql/data:/var/lib/mysql
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: 010573/intermediate-service
-    network_mode: "host"
+  db:
+    image: mysql:5.7
+    container_name: db-service
+    environment:
+      MYSQL_DATABASE: 'vfsdb'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
+      MYSQL_ROOT_PASSWORD: 'Wt2L9n7WMV6Ssgmp'
+    ports:
+      - '3306:3306'
     expose:
-      - '8080'
+      - '3306'
+    networks:
+      - dbconnect
+    volumes:
+      - ./data/prod/mysql/data:/var/lib/mysql
+#  api:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    image: 010573/intermediate-service
+#    network_mode: "host"
+#    expose:
+#      - '8080'
 #    depends_on:
 #      - db
 networks:

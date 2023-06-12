@@ -20,7 +20,6 @@ import (
 
 	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/internal/consumer"
-	cronhandler "github.com/intermediate-service-ta/internal/cron"
 	integratehandler "github.com/intermediate-service-ta/internal/handler/integrator-storage"
 	userhandler "github.com/intermediate-service-ta/internal/handler/user"
 	repository "github.com/intermediate-service-ta/internal/storage"
@@ -100,7 +99,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	// init Handler
 	integrateHdl := integratehandler.NewIntegratorHandler(fileRepo)
 	userHdl := userhandler.NewUserHandler(userRepo, subcsriberRepo)
-	cron := cronhandler.NewCronHandler(subcsriberRepo)
+	//cron := cronhandler.NewCronHandler(subcsriberRepo)
 
 	// init blank engine
 	r := gin.New()
@@ -109,6 +108,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	sess := initSession(dep)
 	client := initClient(dep, sess)
 
+	r.Use(gin.Recovery())
 	// attach session to context
 	r.Use(func(c *gin.Context) {
 		c.Set("vdfsClient", client)
@@ -136,10 +136,10 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 	ctx = context.WithValue(ctx, "server-logger", logger)
 	ctx = context.WithValue(ctx, "config", dep.Config())
 
-	err = cron.ManageSubscriber(ctx)
-	if err != nil {
-		panic(err)
-	}
+	//err = cron.ManageSubscriber(ctx)
+	//if err != nil {
+	//	panic(err)
+	//}
 
 	// init total size client
 	var errs error
@@ -182,6 +182,7 @@ func InitRoutes(dep *boot.Dependencies, sigchan chan os.Signal) *gin.Engine {
 		}
 
 		authRoutes.GET("/backup", integrateHdl.GetFolder)
+		authRoutes.POST("/sync", integrateHdl.SyncOperations)
 		authRoutes.POST("/migrate", integrateHdl.MigrateObjects)
 
 		apiV1UserNoAuth := apiV1.Group("/user")

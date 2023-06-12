@@ -12,12 +12,15 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/gin-gonic/gin"
+	"github.com/robfig/cron"
 
 	"github.com/intermediate-service-ta/boot"
 	"github.com/intermediate-service-ta/helper"
@@ -25,7 +28,9 @@ import (
 )
 
 type IntegratorHandler struct {
-	fileRepo repository.FileRepository
+	fileRepo    repository.FileRepository
+	requestRepo repository.RequestRepository
+	Mu          sync.Mutex
 }
 
 func NewIntegratorHandler(filerepo repository.FileRepository) *IntegratorHandler {
@@ -389,4 +394,67 @@ func (hdl *IntegratorHandler) MigrateObjects(c *gin.Context) {
 		"success": true,
 		"message": fmt.Sprintf("Successfully migrate from %s to %s", clientSource, clientDest),
 	})
+}
+
+func (hdl *IntegratorHandler) SyncOperations(c *gin.Context) {
+	// Get the JSON body and decode into credentials
+	RequestID := c.PostForm("RequestID")
+	if RequestID == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Parameter in RequestID not found",
+		})
+		return
+	}
+
+	TotalCommand := c.PostForm("TotalCommand")
+	if TotalCommand == "" {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "Parameter in TotalCommand not found",
+		})
+		return
+	}
+	TotalCommandInt, err := strconv.Atoi(TotalCommand)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": "error",
+		})
+		return
+	}
+
+	if val, ok := boot.RequestCommand[RequestID]; ok {
+		boot.RequestCommand[RequestID] = boot.CountRequest{TotalCommand: TotalCommandInt, TotalExecuted: val.TotalExecuted}
+	} else {
+		boot.RequestCommand[RequestID] = boot.CountRequest{TotalCommand: TotalCommandInt, TotalExecuted: 0}
+	}
+
+	var isSuccess = false
+	cr := cron.New()
+	var wg sync.WaitGroup
+	wg.Add(1)
+	cr.AddFunc("@every 0.5s", func() {
+		hdl.Mu.Lock()
+		if val, ok := boot.RequestCommand[RequestID]; ok {
+			if val.TotalCommand == val.TotalExecuted && val.TotalExecuted != 0 {
+				isSuccess = true
+				wg.Done()
+				cr.Stop()
+			}
+		}
+		hdl.Mu.Unlock()
+	})
+	cr.Start()
+	wg.Wait()
+
+	if isSuccess {
+		c.AbortWithStatusJSON(200, gin.H{
+			"success": true,
+		})
+		return
+	} else {
+		c.AbortWithStatusJSON(400, gin.H{
+			"success": false,
+			"error":   "err",
+		})
+		return
+	}
 }

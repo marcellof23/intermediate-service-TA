@@ -80,24 +80,24 @@ func (hdl *UserHandler) SignUp(c *gin.Context) {
 	}
 	user.GroupID = user.ID
 
-	subsId, err := hdl.subRepo.GetSubscription(c)
-	if err != nil {
-		c.AbortWithStatusJSON(500, gin.H{
-			"success": false,
-			"error":   err,
-		})
-		return
-	}
-	user.SubscriberID = subsId
-
-	err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
-	if err != nil {
-		c.AbortWithStatusJSON(500, gin.H{
-			"success": false,
-			"error":   err,
-		})
-		return
-	}
+	//subsId, err := hdl.subRepo.GetSubscription(c)
+	//if err != nil {
+	//	c.AbortWithStatusJSON(500, gin.H{
+	//		"success": false,
+	//		"error":   err,
+	//	})
+	//	return
+	//}
+	//user.SubscriberID = subsId
+	//
+	//err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
+	//if err != nil {
+	//	c.AbortWithStatusJSON(500, gin.H{
+	//		"success": false,
+	//		"error":   err,
+	//	})
+	//	return
+	//}
 
 	_, err = hdl.userRepo.Update(c, &user)
 	if err != nil {
@@ -174,26 +174,25 @@ func (hdl *UserHandler) Login(c *gin.Context) {
 		return
 	}
 
-	subsId, err := hdl.subRepo.GetSubscription(c)
-	if err != nil {
-		fmt.Println(err, "AAA")
-		c.AbortWithStatusJSON(500, gin.H{
-			"success": false,
-			"error":   err,
-		})
-		return
-	}
-	user.SubscriberID = subsId
-
-	err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
-	if err != nil {
-		fmt.Println(err, "AAB")
-		c.AbortWithStatusJSON(500, gin.H{
-			"success": false,
-			"error":   err,
-		})
-		return
-	}
+	//subsId, err := hdl.subRepo.GetSubscription(c)
+	//if err != nil {
+	//	c.AbortWithStatusJSON(500, gin.H{
+	//		"success": false,
+	//		"error":   err,
+	//	})
+	//	return
+	//}
+	//user.SubscriberID = subsId
+	//
+	//err = hdl.subRepo.UpdateSubscriber(c, subsId, true)
+	//if err != nil {
+	//	fmt.Println(err, "AAB")
+	//	c.AbortWithStatusJSON(500, gin.H{
+	//		"success": false,
+	//		"error":   err,
+	//	})
+	//	return
+	//}
 
 	c.JSON(200, gin.H{
 		"success": true,

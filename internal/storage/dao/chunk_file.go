@@ -4,7 +4,7 @@ import "github.com/intermediate-service-ta/internal/model"
 
 type ChunkFile struct {
 	Base
-	ID       int64  `gorm:"varchar(255);primary_key;not null"`
+	ID       int64  `gorm:"primary_key;not null"`
 	FileID   int64  `gorm:"varchar(255);not null"`
 	Filename string `gorm:"varchar(255);not null"`
 	Order    int    `gorm:"not null"`

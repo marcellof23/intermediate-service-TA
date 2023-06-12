@@ -8,7 +8,7 @@ var MemorySlice map[string]int
 
 type File struct {
 	Base
-	ID           int64  `gorm:"varchar(255);primary_key;not null"`
+	ID           int64  `gorm:"primary_key;not null"`
 	Filename     string `gorm:"varchar(255);not null"`
 	OriginalName string `gorm:"varchar(255);not null"`
 	Size         int64  `gorm:"not null"`

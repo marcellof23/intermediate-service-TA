@@ -77,9 +77,10 @@ func (cr *Cron) CronJob() {
 		for i := 0; i < 20; i++ {
 			subID := "command-" + uuid.New().String()
 			sub, err := client.CreateSubscription(cr.ctx, subID, pubsub.SubscriptionConfig{
-				ExpirationPolicy: 120 * time.Hour,
-				Topic:            t,
-				AckDeadline:      20 * time.Second,
+				ExpirationPolicy:      120 * time.Hour,
+				Topic:                 t,
+				AckDeadline:           20 * time.Second,
+				EnableMessageOrdering: true,
 			})
 			if err != nil {
 				fmt.Printf("Could not create pubsub Client: %v", err)

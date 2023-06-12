@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -34,6 +35,8 @@ func (con *Consumer) exec(c context.Context, msg Message, log *log.Logger) error
 		con.UploadFile(c, msg)
 	case "chmod":
 		con.ChangeFileMode(c, msg)
+	case "chown":
+		con.ChangeOwnerFile(c, msg)
 	case "cp":
 		con.CopyFile(c, msg)
 	case "rm":
@@ -59,17 +62,17 @@ func (con *Consumer) Retry(effector Effector, delay time.Duration) Effector {
 	return func(ctx context.Context, msg Message) error {
 		for r := 0; ; r++ {
 			err := effector(ctx, msg)
-			if err == nil || r >= 40 {
-				if r >= 40 {
-					con.errorLog.Printf("Retrying function already done 40 times, error still persist err: %s", err.Error())
+			if err == nil || r >= 60 {
+				if r >= 60 {
+					con.errorLog.Printf("Retrying function already done 60 times, error still persist err: %s", err.Error())
 				}
 				return nil
 			}
 
 			select {
 			case <-time.After(delay):
-				if r >= 20 {
-					delay = delay * time.Duration(1.2*float64(time.Second))
+				if r >= 30 {
+					delay = delay * time.Duration(1.1*float64(time.Second))
 					fmt.Println(delay)
 				}
 			case <-ctx.Done():
@@ -118,14 +121,23 @@ func (con *Consumer) AuthQueue(ctx context.Context, msg Message, log *log.Logger
 func (con *Consumer) UploadFile(c context.Context, msg Message) {
 	arrRes := helper.SortSlice(storage.TotalSizeClient)
 
+	con.Mu.Lock()
+	fmt.Println(msg.RequestID, boot.RequestCommand[msg.RequestID])
+	if _, ok := boot.RequestCommand[msg.RequestID]; !ok {
+		boot.RequestCommand[msg.RequestID] = boot.CountRequest{
+			TotalCommand:  0,
+			TotalExecuted: 0,
+		}
+	}
+	con.Mu.Unlock()
+
 	fullPath := helper.JoinPath(msg.AbsPathDest, msg.AbsPathSource)
 	file := model.File{
 		Filename:     fullPath,
 		OriginalName: fullPath,
 		Client:       arrRes[0],
-		Size:         int64(len(msg.Buffer)),
+		Size:         msg.Size,
 	}
-	storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
 
 	fl, err := con.fileRepo.Create(c, &file)
 	if err != nil {
@@ -133,35 +145,61 @@ func (con *Consumer) UploadFile(c context.Context, msg Message) {
 		return
 	}
 
-	cli, err := helper.GetVDFSClientFromContext(c)
-	if err != nil {
-		con.errorLog.Println(err)
-		return
-	}
-	client := helper.ClientInitiation(arrRes[0], cli)
+	if len(msg.Buffer) != 0 {
+		storage.UpdateTotalSizeClient(arrRes[0], int64(len(msg.Buffer)))
 
-	bucketName, err := helper.GetBucketNameFromContext(c)
-	if err != nil {
-		con.errorLog.Println(err)
-		return
-	}
+		cli, err := helper.GetVDFSClientFromContext(c)
+		if err != nil {
+			con.errorLog.Println(err)
+			return
+		}
+		client := helper.ClientInitiation(arrRes[0], cli)
 
-	_, err = client.PutObject(&s3.PutObjectInput{
-		Bucket: aws.String(bucketName),
-		Key:    aws.String(fl.Filename),
-		Body:   bytes.NewReader(msg.Buffer),
-	})
-	if err != nil {
-		con.errorLog.Println(err)
-		return
+		bucketName, err := helper.GetBucketNameFromContext(c)
+		if err != nil {
+			con.errorLog.Println(err)
+			return
+		}
+
+		_, err = client.PutObject(&s3.PutObjectInput{
+			Bucket: aws.String(bucketName),
+			Key:    aws.String(fl.Filename),
+			Body:   bytes.NewReader(msg.Buffer),
+		})
+		if err != nil {
+			con.errorLog.Println(err)
+			return
+		}
 	}
 
 	r := con.Retry(BackupFiletoDisk, 1e9)
-	go r(c, msg)
+	go func() {
+		err := r(c, msg)
+		if err == nil {
+			con.Mu.Lock()
+			if val, ok := boot.RequestCommand[msg.RequestID]; ok {
+				boot.RequestCommand[msg.RequestID] = boot.CountRequest{
+					TotalCommand:  val.TotalCommand,
+					TotalExecuted: val.TotalExecuted + 1,
+				}
+			}
+			con.Mu.Unlock()
+		}
+	}()
 }
 
 func (con *Consumer) WriteFile(c context.Context, msg Message) {
 	arrRes := helper.SortSlice(storage.TotalSizeClient)
+
+	con.Mu.Lock()
+	fmt.Println(msg.RequestID, boot.RequestCommand[msg.RequestID])
+	if _, ok := boot.RequestCommand[msg.RequestID]; !ok {
+		boot.RequestCommand[msg.RequestID] = boot.CountRequest{
+			TotalCommand:  0,
+			TotalExecuted: 0,
+		}
+	}
+	con.Mu.Unlock()
 
 	fullPath := helper.JoinPath(msg.AbsPathDest, msg.AbsPathSource)
 
@@ -171,8 +209,12 @@ func (con *Consumer) WriteFile(c context.Context, msg Message) {
 		return
 	}
 
+	pureFilename := strings.TrimSuffix(fl.Filename, filepath.Ext(fl.Filename))
+	pureFilename = fmt.Sprintf("%s-partition-%d", pureFilename, msg.Order)
+	fname := fmt.Sprintf("%s%s", pureFilename, filepath.Ext(fl.Filename))
+
 	chunkFile := model.ChunkFile{
-		Filename: fl.Filename,
+		Filename: fname,
 		FileID:   fl.ID,
 		Order:    msg.Order,
 		Client:   arrRes[0],
@@ -202,7 +244,7 @@ func (con *Consumer) WriteFile(c context.Context, msg Message) {
 
 	_, err = client.PutObject(&s3.PutObjectInput{
 		Bucket: aws.String(bucketName),
-		Key:    aws.String(fmt.Sprintf("%s-partition-%d", fl.Filename, msg.Order)),
+		Key:    aws.String(fname),
 		Body:   bytes.NewReader(msg.Buffer),
 	})
 	if err != nil {
@@ -211,13 +253,35 @@ func (con *Consumer) WriteFile(c context.Context, msg Message) {
 	}
 
 	r := con.Retry(WriteFileOnDisk, 1e9)
-	go r(c, msg)
+	go func() {
+		err := r(c, msg)
+		if err == nil {
+			con.Mu.Lock()
+			if val, ok := boot.RequestCommand[msg.RequestID]; ok {
+				boot.RequestCommand[msg.RequestID] = boot.CountRequest{
+					TotalCommand:  val.TotalCommand,
+					TotalExecuted: val.TotalExecuted + 1,
+				}
+			}
+			con.Mu.Unlock()
+		}
+	}()
 }
 
 func (con *Consumer) ChangeFileMode(c context.Context, msg Message) {
 	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
 
 	err := os.Chmod(fullPath, os.FileMode(msg.FileMode))
+	if err != nil {
+		con.errorLog.Println(err)
+		return
+	}
+}
+
+func (con *Consumer) ChangeOwnerFile(c context.Context, msg Message) {
+	fullPath := helper.JoinPath(boot.Backup, msg.AbsPathSource)
+
+	err := os.Chown(fullPath, msg.Uid, msg.Uid)
 	if err != nil {
 		con.errorLog.Println(err)
 		return
@@ -256,7 +320,28 @@ func (con *Consumer) RemoveFile(c context.Context, msg Message) {
 		return
 	}
 
-	_, err = client.DeleteObject(&s3.DeleteObjectInput{
+	con.chunkFileRepo.DeleteChunkFileByFileID(c, file.ID)
+	cfs, _ := con.chunkFileRepo.GetChunkFileByFileID(c, file.ID)
+	if len(cfs) != 0 {
+		var objectsToDelete []*s3.ObjectIdentifier
+		for _, cf := range cfs {
+			objectsToDelete = append(objectsToDelete, &s3.ObjectIdentifier{
+				Key: aws.String(cf.Filename),
+			})
+		}
+
+		input := &s3.DeleteObjectsInput{
+			Bucket: aws.String(bucketName),
+			Delete: &s3.Delete{
+				Objects: objectsToDelete,
+				Quiet:   aws.Bool(false), // Set to true to suppress individual deletion responses
+			},
+		}
+
+		_, _ = client.DeleteObjects(input)
+	}
+
+	_, _ = client.DeleteObject(&s3.DeleteObjectInput{
 		Bucket: aws.String(bucketName),
 		Key:    aws.String(file.Filename),
 	})
